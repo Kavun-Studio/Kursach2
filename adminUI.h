@@ -12,11 +12,14 @@ namespace Krsv {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::IO;
 	using namespace std;
 	using namespace msclr::interop;
 
-	student a[10];
-	int n;
+	using namespace Runtime::InteropServices;
+
+	//student a[10];
+	//int n;
 
 	/// <summary>
 	/// Сводка для adminUI
@@ -427,6 +430,29 @@ namespace Krsv {
 
 		}
 #pragma endregion
+
+	private: void Scan_List(LIST* L) {
+		dataGridView1->Rows->Clear();  // Очистка таблицы перед заполнением
+
+		if (L == nullptr) return;  // Проверка на пустой список
+
+		LIST* q = L;
+		int i = 0;
+
+		while (q != nullptr) {
+			// Добавление новой строки
+			dataGridView1->Rows->Add();
+
+			// Заполнение ячеек данными
+			dataGridView1->Rows[i]->Cells[0]->Value = marshal_as<String^>(q->element.fam);  // Фамилия
+			dataGridView1->Rows[i]->Cells[1]->Value = marshal_as<String^>(q->element.im);   // Имя (исправлено Cells[1])
+			dataGridView1->Rows[i]->Cells[2]->Value = System::Convert::ToString(q->element.age);  // Возраст
+
+			q = q->next;  // Переход к следующему элементу
+			i++;          // Увеличение счетчика строк
+		}
+	}
+
 	private: void showst(student* a, int n)
 	{
 		dataGridView1->Rows->Clear();
@@ -449,22 +475,51 @@ namespace Krsv {
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		savest(a, n);
+		savest(L);
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
-	{
-		ifstream f1("FileName.txt");
-		n = 0;
-		while (!f1.eof())
-		{
-			f1 >> a[n].fam;
-			f1 >> a[n].im;
-			f1 >> a[n].age;
-			n++;
+	{// Очистка существующего списка
+		if (L != nullptr) {
+			while (L != nullptr) {
+				L = DelFirst_List(L);  // Удаляем элементы с начала списка
+			}
 		}
-		n--;
-		f1.close();
-		showst(a, n);
+
+		// Чтение данных из файла и создание нового списка
+		student v;
+		ifstream f("FileName.txt");
+
+		if (!f.is_open()) {
+			// Обработка ошибки открытия файла
+			MessageBox::Show("Ошибка при открытии файла", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+
+		// Чтение первой записи
+		std::string fam, im;
+		int age;
+		if (f >> fam >> im >> age) {
+			v.fam = fam;
+			v.im = im;
+			v.age = age;
+			L = Init_List(v);  // Создаем первый элемент списка
+			LIST* q = L;       // Указатель на последний элемент
+
+			// Чтение остальных записей
+			while (f >> fam >> im >> age) {
+				v.fam = fam;
+				v.im = im;
+				v.age = age;
+				q = InsAfter_List(v, L, q);  // Добавляем элементы в конец списка
+			}
+		}
+		else {
+			// Файл пустой или содержит некорректные данные
+			L = nullptr;
+		}
+
+		f.close();
+		Scan_List(L);  // Обновление отображения списка в интерфейсе
 	}
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e)
 	{
@@ -472,27 +527,51 @@ namespace Krsv {
 	}
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		if (textBox1->Text == "" && textBox2->Text == "")
-		{
-			MessageBox::Show("Не заполнены поля Фамилия, Имя!", "Повторите ввод", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		// Проверка заполнения обязательных полей
+		if (String::IsNullOrEmpty(textBox1->Text) || String::IsNullOrEmpty(textBox2->Text)) {
+			MessageBox::Show("Не заполнены поля Фамилия и Имя!", "Ошибка ввода",
+				MessageBoxButtons::OK, MessageBoxIcon::Error);
 			return;
 		}
-		if (textBox3->Text == "")
-		{
-			MessageBox::Show("Не заполнены поле Возраст", "Повторите ввод", MessageBoxButtons::OK, MessageBoxIcon::Error);
+
+		if (String::IsNullOrEmpty(textBox3->Text)) {
+			MessageBox::Show("Не заполнено поле Возраст", "Ошибка ввода",
+				MessageBoxButtons::OK, MessageBoxIcon::Error);
 			return;
 		}
-		else
-		{
+
+		try {
+			// Подготовка данных
+			student v;
 			marshal_context^ context = gcnew marshal_context();
-			a[n].fam = context->marshal_as < string >(textBox1->Text->ToString());
-			a[n].im = context->marshal_as < string >(textBox2->Text->ToString());
-			a[n].age = Convert::ToInt32(textBox3->Text);
-			n++;
-			showst(a, n);
-			textBox1->Text == "";
-			textBox2->Text == "";
-			textBox3->Text == "";
+
+			// Конвертация данных из TextBox
+			v.fam = context->marshal_as<std::string>(textBox1->Text);
+			v.im = context->marshal_as<std::string>(textBox2->Text);
+			v.age = Convert::ToInt32(textBox3->Text);
+
+			// Вставка нового элемента
+			if (L == nullptr) {
+				L = Init_List(v);  // Если список пустой, создаем первый элемент
+			}
+			else {
+				LIST* q = L;
+				q = InsAfter_List(v, L, q);  // Вставка после головы списка
+			}
+
+			// Обновление интерфейса
+			Scan_List(L);
+
+			// Очистка полей ввода
+			textBox1->Text = "";
+			textBox2->Text = "";
+			textBox3->Text = "";
+
+			delete context;  // Освобождение ресурсов
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Ошибка при добавлении: " + ex->Message, "Ошибка",
+				MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}
 	private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e)
@@ -526,9 +605,9 @@ namespace Krsv {
 	}
 
 
-	private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) 
+	private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		if(comboBox1->SelectedIndex == -1)
+		if (comboBox1->SelectedIndex == -1)
 		{
 			MessageBox::Show("Выберите поле для сортировки!", "Сортировка",
 				MessageBoxButtons::OK, MessageBoxIcon::Error); return;
@@ -537,7 +616,7 @@ namespace Krsv {
 		//if (comboBox1->SelectedIndex == 1) sort12(a, n);
 		showst(a, n);
 	}
-	private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) 
+	private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		/*if (comboBox1->SelectedIndex == -1)
 		{
@@ -548,5 +627,5 @@ namespace Krsv {
 		if (comboBox1->SelectedIndex == 1) sort22(a, n);
 		showst(a, n);*/
 	}
-};
+	};
 }

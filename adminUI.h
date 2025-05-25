@@ -73,6 +73,11 @@ namespace Krsv {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column6;
+	private: System::Windows::Forms::TextBox^ textBox5;
+	private: System::Windows::Forms::Button^ button8;
+	private: System::Windows::Forms::GroupBox^ groupBox1;
+
+
 
 	protected:
 
@@ -118,10 +123,14 @@ namespace Krsv {
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
+			this->button8 = (gcnew System::Windows::Forms::Button());
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->BeginInit();
+			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// dataGridView1
@@ -198,7 +207,7 @@ namespace Krsv {
 			// 
 			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->textBox1->Location = System::Drawing::Point(1115, 15);
+			this->textBox1->Location = System::Drawing::Point(1115, 22);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(237, 35);
 			this->textBox1->TabIndex = 5;
@@ -207,7 +216,7 @@ namespace Krsv {
 			// 
 			this->textBox2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->textBox2->Location = System::Drawing::Point(1115, 73);
+			this->textBox2->Location = System::Drawing::Point(1115, 63);
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(237, 35);
 			this->textBox2->TabIndex = 6;
@@ -216,7 +225,7 @@ namespace Krsv {
 			// 
 			this->textBox3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->textBox3->Location = System::Drawing::Point(1115, 127);
+			this->textBox3->Location = System::Drawing::Point(1115, 104);
 			this->textBox3->Name = L"textBox3";
 			this->textBox3->Size = System::Drawing::Size(237, 35);
 			this->textBox3->TabIndex = 7;
@@ -226,7 +235,7 @@ namespace Krsv {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label1->Location = System::Drawing::Point(967, 21);
+			this->label1->Location = System::Drawing::Point(983, 22);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(123, 29);
 			this->label1->TabIndex = 8;
@@ -237,7 +246,7 @@ namespace Krsv {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label2->Location = System::Drawing::Point(1027, 79);
+			this->label2->Location = System::Drawing::Point(1043, 63);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(63, 29);
 			this->label2->TabIndex = 9;
@@ -248,7 +257,7 @@ namespace Krsv {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label3->Location = System::Drawing::Point(983, 130);
+			this->label3->Location = System::Drawing::Point(999, 104);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(107, 29);
 			this->label3->TabIndex = 10;
@@ -256,7 +265,7 @@ namespace Krsv {
 			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(1138, 198);
+			this->button4->Location = System::Drawing::Point(1140, 145);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(191, 47);
 			this->button4->TabIndex = 11;
@@ -300,7 +309,7 @@ namespace Krsv {
 				static_cast<System::Byte>(204)));
 			this->comboBox1->FormattingEnabled = true;
 			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Имя", L"Возраст" });
-			this->comboBox1->Location = System::Drawing::Point(53, 76);
+			this->comboBox1->Location = System::Drawing::Point(27, 76);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(237, 37);
 			this->comboBox1->TabIndex = 15;
@@ -318,7 +327,7 @@ namespace Krsv {
 			// 
 			// button6
 			// 
-			this->button6->Location = System::Drawing::Point(53, 136);
+			this->button6->Location = System::Drawing::Point(60, 136);
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(191, 38);
 			this->button6->TabIndex = 17;
@@ -341,7 +350,7 @@ namespace Krsv {
 			this->groupBox2->Controls->Add(this->button5);
 			this->groupBox2->Controls->Add(this->textBox4);
 			this->groupBox2->Controls->Add(this->label4);
-			this->groupBox2->Location = System::Drawing::Point(885, 301);
+			this->groupBox2->Location = System::Drawing::Point(885, 198);
 			this->groupBox2->Name = L"groupBox2";
 			this->groupBox2->Size = System::Drawing::Size(467, 138);
 			this->groupBox2->TabIndex = 20;
@@ -354,7 +363,7 @@ namespace Krsv {
 			this->groupBox3->Controls->Add(this->comboBox1);
 			this->groupBox3->Controls->Add(this->label5);
 			this->groupBox3->Controls->Add(this->button6);
-			this->groupBox3->Location = System::Drawing::Point(885, 455);
+			this->groupBox3->Location = System::Drawing::Point(885, 342);
 			this->groupBox3->Name = L"groupBox3";
 			this->groupBox3->Size = System::Drawing::Size(467, 180);
 			this->groupBox3->TabIndex = 21;
@@ -396,12 +405,43 @@ namespace Krsv {
 			this->Column6->Name = L"Column6";
 			this->Column6->Width = 150;
 			// 
+			// textBox5
+			// 
+			this->textBox5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->textBox5->Location = System::Drawing::Point(27, 41);
+			this->textBox5->Name = L"textBox5";
+			this->textBox5->Size = System::Drawing::Size(237, 35);
+			this->textBox5->TabIndex = 23;
+			// 
+			// button8
+			// 
+			this->button8->Location = System::Drawing::Point(270, 38);
+			this->button8->Name = L"button8";
+			this->button8->Size = System::Drawing::Size(191, 38);
+			this->button8->TabIndex = 19;
+			this->button8->Text = L"Удалить";
+			this->button8->UseVisualStyleBackColor = true;
+			this->button8->Click += gcnew System::EventHandler(this, &adminUI::button8_Click);
+			// 
+			// groupBox1
+			// 
+			this->groupBox1->Controls->Add(this->textBox5);
+			this->groupBox1->Controls->Add(this->button8);
+			this->groupBox1->Location = System::Drawing::Point(885, 528);
+			this->groupBox1->Name = L"groupBox1";
+			this->groupBox1->Size = System::Drawing::Size(467, 95);
+			this->groupBox1->TabIndex = 15;
+			this->groupBox1->TabStop = false;
+			this->groupBox1->Text = L"Удалить по фамилии";
+			// 
 			// adminUI
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->ClientSize = System::Drawing::Size(1364, 644);
+			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->dataGridView2);
 			this->Controls->Add(this->textBox3);
 			this->Controls->Add(this->groupBox3);
@@ -425,6 +465,8 @@ namespace Krsv {
 			this->groupBox3->ResumeLayout(false);
 			this->groupBox3->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->EndInit();
+			this->groupBox1->ResumeLayout(false);
+			this->groupBox1->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -527,79 +569,70 @@ namespace Krsv {
 	}
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		// Проверка заполнения обязательных полей
-		if (String::IsNullOrEmpty(textBox1->Text) || String::IsNullOrEmpty(textBox2->Text)) {
-			MessageBox::Show("Не заполнены поля Фамилия и Имя!", "Ошибка ввода",
-				MessageBoxButtons::OK, MessageBoxIcon::Error);
+		if (textBox1->Text == "" && textBox2->Text == "")
+		{
+			MessageBox::Show("He заполнены поля Фамилия, Имя!", "Повторите ввод", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			return;
 		}
-
-		if (String::IsNullOrEmpty(textBox3->Text)) {
-			MessageBox::Show("Не заполнено поле Возраст", "Ошибка ввода",
-				MessageBoxButtons::OK, MessageBoxIcon::Error);
+		if (textBox3->Text == "")
+		{
+			MessageBox::Show("He заполнено поле Возраст", "Повторите ввод", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			return;
 		}
-
-		try {
-			// Подготовка данных
+		else
+		{
 			student v;
-			marshal_context^ context = gcnew marshal_context();
-
-			// Конвертация данных из TextBox
-			v.fam = context->marshal_as<std::string>(textBox1->Text);
-			v.im = context->marshal_as<std::string>(textBox2->Text);
+			int n = 0;
+			LIST* q;
+			q = L; //вставка после головы
+			marshal_context^ context = gcnew marshal_context();//!!!!!
+			v.fam = context->marshal_as<std::string>(textBox1->Text->ToString());
+			v.im = context->marshal_as<std::string>(textBox2->Text->ToString());
 			v.age = Convert::ToInt32(textBox3->Text);
+			q = InsAfter_List(v, L, q);
 
-			// Вставка нового элемента
-			if (L == nullptr) {
-				L = Init_List(v);  // Если список пустой, создаем первый элемент
-			}
-			else {
-				LIST* q = L;
-				q = InsAfter_List(v, L, q);  // Вставка после головы списка
-			}
-
-			// Обновление интерфейса
 			Scan_List(L);
-
-			// Очистка полей ввода
 			textBox1->Text = "";
 			textBox2->Text = "";
 			textBox3->Text = "";
-
-			delete context;  // Освобождение ресурсов
-		}
-		catch (Exception^ ex) {
-			MessageBox::Show("Ошибка при добавлении: " + ex->Message, "Ошибка",
-				MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}
 	private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		if (textBox4->Text == "")
 		{
-			MessageBox::Show("Введите фамилию для поиска!", "Повторите ввод",
-				MessageBoxButtons::OK, MessageBoxIcon::Error); return;
+			MessageBox::Show("Введите фамилию для поиска!", "Повторите ввод", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
 		}
 		else
 		{
 			dataGridView2->Rows->Clear();
-			int k = 0;
-			for (int i = 0; i < n; i++)
+			student v;
+			LIST* q = L;
+			int i = 0;
+			marshal_context^ context = gcnew marshal_context(); //!!!!!
+			std::string poisk = context->marshal_as<std::string>(textBox4->Text);
+			bool find = false;
+			if (q != NULL)
 			{
-				if (marshal_as< string >(textBox4->Text->ToString()) == a[i].fam)
+				v.fam = poisk;
+				LIST* F = Find_List_Range(v, q);
+				while (F != NULL)
 				{
 					dataGridView2->Rows->Add();
-					dataGridView2->Rows[k]->Cells[0]->Value = marshal_as<String^>(a[i].fam);
-					dataGridView2->Rows[k]->Cells[1]->Value = marshal_as<String^>(a[i].im);
-					dataGridView2->Rows[k]->Cells[2]->Value = System::Convert::ToString(a[i].age);
-					k++;
+					dataGridView2->Rows[i]->Cells[0]->Value = marshal_as<String^>(F->element.fam);
+					dataGridView2->Rows[i]->Cells[1]->Value = marshal_as<String^>(F->element.im);
+					dataGridView2->Rows[i]->Cells[2]->Value = System::Convert::ToString(F->element.age);
+					i++;
+					find = true;
+					F = F->next;
+					F = Find_List_Range(v, F);
 				}
 			}
-			if (k == 0)
+			if (find == false)
 			{
-				MessageBox::Show("Ничего не найдено!", "Поиск", MessageBoxButtons::OK,
-					MessageBoxIcon::Error); return;
+				MessageBox::Show("Ничего не найдено!", "Поиск", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return;
 			}
 		}
 	}
@@ -607,25 +640,57 @@ namespace Krsv {
 
 	private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		if (comboBox1->SelectedIndex == -1)
+		if (comboBox1->SelectedIndex < 0)
 		{
-			MessageBox::Show("Выберите поле для сортировки!", "Сортировка",
-				MessageBoxButtons::OK, MessageBoxIcon::Error); return;
+			MessageBox::Show("Выберите поле для сортировки!", "Сортировка", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
 		}
-		if (comboBox1->SelectedIndex == 0) sort11(a, n);
-		//if (comboBox1->SelectedIndex == 1) sort12(a, n);
-		showst(a, n);
+		if (comboBox1->SelectedIndex == 0) sort_fam_1(L);
+		if (comboBox1->SelectedIndex == 1) sort_age_1(L);
+		Scan_List(L);
 	}
 	private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		/*if (comboBox1->SelectedIndex == -1)
+		if (comboBox1->SelectedIndex < 0)
 		{
-			MessageBox::Show("Выберите поле для сортировки!", "Сортировка",
-				MessageBoxButtons::OK, MessageBoxIcon::Error); return;
+			MessageBox::Show("Выберите поле для сортировки!", "Сортировка", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
 		}
-		if (comboBox1->SelectedIndex == 0) sort21(a, n);
-		if (comboBox1->SelectedIndex == 1) sort22(a, n);
-		showst(a, n);*/
+		if (comboBox1->SelectedIndex == 0) sort_fam_2(L);
+		if (comboBox1->SelectedIndex == 1) sort_age_2(L);
+		Scan_List(L);
 	}
-	};
+
+	private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+		student v;
+		marshal_context^ context = gcnew marshal_context();//!!!!!
+		if (textBox5->Text == "")
+		{
+			MessageBox::Show("He sanonneho none", "Повторите ввод", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+		else
+		{
+			std::string poisk = context->marshal_as<std::string>(textBox5->Text);
+			v.fam = poisk;
+			LIST* adres;
+			adres = Find_List_Range(v, L);
+			while (adres != NULL)
+			{
+				if (adres == L)
+				{
+					L = DelFirst_List(L);
+					adres = NULL;
+				}
+				else if (adres != L)
+				{
+					Del_List(adres, L);
+					adres = Find_List_Range(v, L);
+				}
+			}
+			Scan_List(L);
+		}
+	}
+};
 }

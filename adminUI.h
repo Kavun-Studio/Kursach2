@@ -552,7 +552,7 @@ namespace Krsv {
 				v.fam = fam;
 				v.im = im;
 				v.age = age;
-				q = InsAfter_List(v, L, q);  // Добавляем элементы в конец списка
+				q = Ins_AfterList(v, L, q);  // Добавляем элементы в конец списка
 			}
 		}
 		else {
@@ -589,7 +589,7 @@ namespace Krsv {
 			v.fam = context->marshal_as<std::string>(textBox1->Text->ToString());
 			v.im = context->marshal_as<std::string>(textBox2->Text->ToString());
 			v.age = Convert::ToInt32(textBox3->Text);
-			q = InsAfter_List(v, L, q);
+			q = Ins_AfterList(v, L, q);
 
 			Scan_List(L);
 			textBox1->Text = "";

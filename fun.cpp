@@ -1,3 +1,5 @@
+// Реализация функций fun.cpp
+
 #include "fun.h"
 
 // Инициализация списка (первый элемент)
@@ -52,7 +54,6 @@ LIST* Del_List(LIST* L, LIST* p) {
         prev->next = p->next;
         delete p;
     }
-
     return L;
 }
 
@@ -84,83 +85,99 @@ void SaveListToFile(LIST* L, const string& filename) {
         file << "---" << '\n';
         q = q->next;
     }
-
     file.close();
 }
 
-// Сортировка по номеру карты (по возрастанию)
-void SortByCardAscending(LIST*& L) {
-    if (!L) return;
+// Сортировка пузырьком по фамилии (по возрастанию)
+LIST* SortBySurnameAscending(LIST* L) {
+    if (!L) return L;
+
     bool swapped;
     do {
         swapped = false;
         LIST* p = L;
         while (p->next) {
-            if (p->element.cardNumber > p->next->element.cardNumber) {
-                swap(p->element, p->next->element);
+            if (p->element.fam > p->next->element.fam) {
+                passagers temp = p->element;
+                p->element = p->next->element;
+                p->next->element = temp;
                 swapped = true;
             }
             p = p->next;
         }
     } while (swapped);
+    return L;
 }
 
-// Сортировка по количеству баллов (по возрастанию)
-void SortByPointsAscending(LIST*& L) {
-    if (!L) return;
+// Сортировка пузырьком по количеству баллов (по возрастанию)
+LIST* SortByPointsAscending(LIST* L) {
+    if (!L) return L;
+
     bool swapped;
     do {
         swapped = false;
         LIST* p = L;
         while (p->next) {
             if (p->element.pointCount > p->next->element.pointCount) {
-                swap(p->element, p->next->element);
+                passagers temp = p->element;
+                p->element = p->next->element;
+                p->next->element = temp;
                 swapped = true;
             }
             p = p->next;
         }
     } while (swapped);
+    return L;
 }
 
-// Сортировка по номеру карты (по убыванию)
-void SortByCardDescending(LIST*& L) {
-    if (!L) return;
+// Сортировка пузырьком по фамилии (по убыванию)
+LIST* SortBySurnameDescending(LIST* L) {
+    if (!L) return L;
+
     bool swapped;
     do {
         swapped = false;
         LIST* p = L;
         while (p->next) {
-            if (p->element.cardNumber < p->next->element.cardNumber) {
-                swap(p->element, p->next->element);
+            if (p->element.fam < p->next->element.fam) {
+                passagers temp = p->element;
+                p->element = p->next->element;
+                p->next->element = temp;
                 swapped = true;
             }
             p = p->next;
         }
     } while (swapped);
+    return L;
 }
 
-// Сортировка по количеству баллов (по убыванию)
-void SortByPointsDescending(LIST*& L) {
-    if (!L) return;
+// Сортировка пузырьком по количеству баллов (по убыванию)
+LIST* SortByPointsDescending(LIST* L) {
+    if (!L) return L;
+
     bool swapped;
     do {
         swapped = false;
         LIST* p = L;
         while (p->next) {
             if (p->element.pointCount < p->next->element.pointCount) {
-                swap(p->element, p->next->element);
+                passagers temp = p->element;
+                p->element = p->next->element;
+                p->next->element = temp;
                 swapped = true;
             }
             p = p->next;
         }
     } while (swapped);
+    return L;
 }
 
 // Освобождение памяти
-void FreeList(LIST*& L) {
+LIST* FreeList(LIST* L) {
     while (L) {
         LIST* temp = L;
         L = L->next;
         delete temp;
     }
+    return nullptr;
 }

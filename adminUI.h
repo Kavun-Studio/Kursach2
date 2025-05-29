@@ -51,9 +51,12 @@ namespace Krsv {
 	protected:
 	private: System::Windows::Forms::MenuStrip^ menuStrip1;
 	private: System::Windows::Forms::ToolStripMenuItem^ файлToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ открытьToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ сохранитьToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ очиститьToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ openToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ saveToolStripMenuItem;
+
+
+	private: System::Windows::Forms::ToolStripMenuItem^ clearToolStripMenuItem;
+
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
@@ -82,7 +85,7 @@ namespace Krsv {
 	private: System::Windows::Forms::TextBox^ addCardTxt;
 	private: System::Windows::Forms::TextBox^ addFamTxt;
 	private: System::Windows::Forms::TextBox^ addNumberTxt;
-
+	private: LIST* L = nullptr;
 
 
 
@@ -139,9 +142,9 @@ namespace Krsv {
 			this->Column9 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->файлToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->открытьToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->сохранитьToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->очиститьToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->openToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->saveToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->clearToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
@@ -297,37 +300,40 @@ namespace Krsv {
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->файлToolStripMenuItem });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(1462, 33);
+			this->menuStrip1->Size = System::Drawing::Size(1462, 36);
 			this->menuStrip1->TabIndex = 25;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
 			// файлToolStripMenuItem
 			// 
 			this->файлToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
-				this->открытьToolStripMenuItem,
-					this->сохранитьToolStripMenuItem, this->очиститьToolStripMenuItem
+				this->openToolStripMenuItem,
+					this->saveToolStripMenuItem, this->clearToolStripMenuItem
 			});
 			this->файлToolStripMenuItem->Name = L"файлToolStripMenuItem";
-			this->файлToolStripMenuItem->Size = System::Drawing::Size(69, 29);
+			this->файлToolStripMenuItem->Size = System::Drawing::Size(69, 32);
 			this->файлToolStripMenuItem->Text = L"Файл";
 			// 
-			// открытьToolStripMenuItem
+			// openToolStripMenuItem
 			// 
-			this->открытьToolStripMenuItem->Name = L"открытьToolStripMenuItem";
-			this->открытьToolStripMenuItem->Size = System::Drawing::Size(200, 34);
-			this->открытьToolStripMenuItem->Text = L"Открыть";
+			this->openToolStripMenuItem->Name = L"openToolStripMenuItem";
+			this->openToolStripMenuItem->Size = System::Drawing::Size(270, 34);
+			this->openToolStripMenuItem->Text = L"Открыть";
+			this->openToolStripMenuItem->Click += gcnew System::EventHandler(this, &adminUI::открытьToolStripMenuItem_Click);
 			// 
-			// сохранитьToolStripMenuItem
+			// saveToolStripMenuItem
 			// 
-			this->сохранитьToolStripMenuItem->Name = L"сохранитьToolStripMenuItem";
-			this->сохранитьToolStripMenuItem->Size = System::Drawing::Size(200, 34);
-			this->сохранитьToolStripMenuItem->Text = L"Сохранить";
+			this->saveToolStripMenuItem->Name = L"saveToolStripMenuItem";
+			this->saveToolStripMenuItem->Size = System::Drawing::Size(270, 34);
+			this->saveToolStripMenuItem->Text = L"Сохранить";
+			this->saveToolStripMenuItem->Click += gcnew System::EventHandler(this, &adminUI::сохранитьToolStripMenuItem_Click);
 			// 
-			// очиститьToolStripMenuItem
+			// clearToolStripMenuItem
 			// 
-			this->очиститьToolStripMenuItem->Name = L"очиститьToolStripMenuItem";
-			this->очиститьToolStripMenuItem->Size = System::Drawing::Size(200, 34);
-			this->очиститьToolStripMenuItem->Text = L"Очистить";
+			this->clearToolStripMenuItem->Name = L"clearToolStripMenuItem";
+			this->clearToolStripMenuItem->Size = System::Drawing::Size(270, 34);
+			this->clearToolStripMenuItem->Text = L"Очистить";
+			this->clearToolStripMenuItem->Click += gcnew System::EventHandler(this, &adminUI::clearToolStripMenuItem_Click);
 			// 
 			// label5
 			// 
@@ -505,6 +511,7 @@ namespace Krsv {
 			this->addButton->TabIndex = 29;
 			this->addButton->Text = L"Добавить";
 			this->addButton->UseVisualStyleBackColor = true;
+			this->addButton->Click += gcnew System::EventHandler(this, &adminUI::addButton_Click);
 			// 
 			// label7
 			// 
@@ -592,6 +599,7 @@ namespace Krsv {
 			// 
 			this->addNumberTxt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->addNumberTxt->ForeColor = System::Drawing::SystemColors::WindowFrame;
 			this->addNumberTxt->Location = System::Drawing::Point(196, 83);
 			this->addNumberTxt->Name = L"addNumberTxt";
 			this->addNumberTxt->Size = System::Drawing::Size(220, 30);
@@ -602,7 +610,7 @@ namespace Krsv {
 			this->sortBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->sortBox->FormattingEnabled = true;
-			this->sortBox->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Номер бонусной карты", L"Количество баллов" });
+			this->sortBox->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Фамилия", L"Количество баллов" });
 			this->sortBox->Location = System::Drawing::Point(6, 38);
 			this->sortBox->Name = L"sortBox";
 			this->sortBox->Size = System::Drawing::Size(247, 33);
@@ -618,6 +626,7 @@ namespace Krsv {
 			this->sortVozrButton->TabIndex = 35;
 			this->sortVozrButton->Text = L"По возрастанию";
 			this->sortVozrButton->UseVisualStyleBackColor = true;
+			this->sortVozrButton->Click += gcnew System::EventHandler(this, &adminUI::sortVozrButton_Click);
 			// 
 			// sortUbvButton
 			// 
@@ -629,6 +638,7 @@ namespace Krsv {
 			this->sortUbvButton->TabIndex = 36;
 			this->sortUbvButton->Text = L"По убыванию";
 			this->sortUbvButton->UseVisualStyleBackColor = true;
+			this->sortUbvButton->Click += gcnew System::EventHandler(this, &adminUI::sortUbvButton_Click);
 			// 
 			// Sort
 			// 
@@ -830,186 +840,7 @@ namespace Krsv {
 		this->searchLevelColumn->HeaderText = "Уровень";
 		this->searchPointColumn->HeaderText = "Количство баллов";
 	}
-	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e)
-	{
-		SaveListToFile(L);  // Сохранение списка в файл
-	}
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
-	{// Очистка существующего списка
-		if (L != nullptr) {
-			while (L != nullptr) {
-				L = DelFirst_List(L);  // Удаляем элементы с начала списка
-			}
-		}
-
-		// Чтение данных из файла и создание нового списка
-		passagers v;
-		ifstream f("FileName.txt");
-
-		if (!f.is_open()) {
-			// Обработка ошибки открытия файла
-			MessageBox::Show("Ошибка при открытии файла", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
-			return;
-		}
-
-		// Чтение первой записи
-		std::string fam, im;
-		int age;
-		if (f >> fam >> im >> age) {
-			v.fam = fam;
-			v.im = im;
-			v.age = age;
-			L = Init_List(v);  // Создаем первый элемент списка
-			LIST* q = L;       // Указатель на последний элемент
-
-			// Чтение остальных записей
-			while (f >> fam >> im >> age) {
-				v.fam = fam;
-				v.im = im;
-				v.age = age;
-				q = Ins_AfterList(v, L, q);  // Добавляем элементы в конец списка
-			}
-		}
-		else {
-			// Файл пустой или содержит некорректные данные
-			L = nullptr;
-		}
-
-		f.close();
-		Scan_List(L);  // Обновление отображения списка в интерфейсе
-	}
-	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e)
-	{
-		fullGrid->Rows->Clear();
-	}
-	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e)
-	{
-		if (textBox1->Text == "" && textBox2->Text == "")
-		{
-			MessageBox::Show("He заполнены поля Фамилия, Имя!", "Повторите ввод", MessageBoxButtons::OK, MessageBoxIcon::Error);
-			return;
-		}
-		if (textBox3->Text == "")
-		{
-			MessageBox::Show("He заполнено поле Возраст", "Повторите ввод", MessageBoxButtons::OK, MessageBoxIcon::Error);
-			return;
-		}
-		else
-		{
-			passagers v;
-			int n = 0;
-			LIST* q;
-			q = L; //вставка после головы
-			marshal_context^ context = gcnew marshal_context();//!!!!!
-			v.fam = context->marshal_as<std::string>(textBox1->Text->ToString());
-			v.im = context->marshal_as<std::string>(textBox2->Text->ToString());
-			v.age = Convert::ToInt32(textBox3->Text);
-			q = Ins_AfterList(v, L, q);
-
-			Scan_List(L);
-			textBox1->Text = "";
-			textBox2->Text = "";
-			textBox3->Text = "";
-		}
-	}
-	private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e)
-	{
-		if (searchTxt->Text == "")
-		{
-			MessageBox::Show("Введите фамилию для поиска!", "Повторите ввод", MessageBoxButtons::OK, MessageBoxIcon::Error);
-			return;
-		}
-		else
-		{
-			searchGrid->Rows->Clear();
-			passagers v;
-			LIST* q = L;
-			int i = 0;
-			marshal_context^ context = gcnew marshal_context(); //!!!!!
-			std::string poisk = context->marshal_as<std::string>(searchTxt->Text);
-			bool find = false;
-			if (q != NULL)
-			{
-				v.fam = poisk;
-				LIST* F = Find_List_Range(v, q);
-				while (F != NULL)
-				{
-					searchGrid->Rows->Add();
-					searchGrid->Rows[i]->Cells[0]->Value = marshal_as<String^>(F->element.fam);
-					searchGrid->Rows[i]->Cells[1]->Value = marshal_as<String^>(F->element.im);
-					searchGrid->Rows[i]->Cells[2]->Value = System::Convert::ToString(F->element.age);
-					i++;
-					find = true;
-					F = F->next;
-					F = Find_List_Range(v, F);
-				}
-			}
-			if (find == false)
-			{
-				MessageBox::Show("Ничего не найдено!", "Поиск", MessageBoxButtons::OK, MessageBoxIcon::Error);
-				return;
-			}
-		}
-	}
-
-
-	private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e)
-	{
-		if (comboBox1->SelectedIndex < 0)
-		{
-			MessageBox::Show("Выберите поле для сортировки!", "Сортировка", MessageBoxButtons::OK, MessageBoxIcon::Error);
-			return;
-		}
-		if (comboBox1->SelectedIndex == 0) sort_fam_1(L);
-		if (comboBox1->SelectedIndex == 1) sort_age_1(L);
-		Scan_List(L);
-	}
-	private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e)
-	{
-		if (comboBox1->SelectedIndex < 0)
-		{
-			MessageBox::Show("Выберите поле для сортировки!", "Сортировка", MessageBoxButtons::OK, MessageBoxIcon::Error);
-			return;
-		}
-		if (comboBox1->SelectedIndex == 0) sort_fam_2(L);
-		if (comboBox1->SelectedIndex == 1) sort_age_2(L);
-		Scan_List(L);
-	}
-
-	private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e)
-	{
-		passagers v;
-		marshal_context^ context = gcnew marshal_context();//!!!!!
-		if (textBox5->Text == "")
-		{
-			MessageBox::Show("He sanonneho none", "Повторите ввод", MessageBoxButtons::OK, MessageBoxIcon::Error);
-			return;
-		}
-		else
-		{
-			std::string poisk = context->marshal_as<std::string>(textBox5->Text);
-			v.fam = poisk;
-			LIST* adres;
-			adres = Find_List_Range(v, L);
-			while (adres != NULL)
-			{
-				if (adres == L)
-				{
-					L = DelFirst_List(L);
-					adres = NULL;
-				}
-				else if (adres != L)
-				{
-					Del_List(adres, L);
-					adres = Find_List_Range(v, L);
-				}
-			}
-			Scan_List(L);
-		}
-	}
-
-
-	private: System::Void searchButton_Click(System::Object^ sender, System::EventArgs^ e) 
+	private: System::Void searchButton_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		if (searchTxt->Text == "")
 		{
@@ -1061,5 +892,113 @@ namespace Krsv {
 			MessageBox::Show("Ничего не найдено!", "Поиск", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		}
 	}
-};
+	private: System::Void clearToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		fullGrid->Rows->Clear();
+	}
+	private: System::Void addButton_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		if (addNumberTxt->Text == "" || addCardTxt->Text == "" || addFamTxt->Text == "" || addLevelBox->Text == "" || addCountTxt->Text == "")
+		{
+			MessageBox::Show("Не все поля заполены", "Повторите ввод", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+		else
+		{
+			passagers v;
+			int n = 0;
+			LIST* q;
+			q = L; //вставка после головы
+			marshal_context^ context = gcnew marshal_context();//!!!!!
+			v.phoneNumber = context->marshal_as<std::string>(addNumberTxt->Text->ToString());
+			v.fam = context->marshal_as<std::string>(addFamTxt->Text->ToString());
+			v.cardNumber = Convert::ToInt32(addCardTxt->Text);
+			v.level = context->marshal_as<std::string>(addLevelBox->Text->ToString());
+			v.pointCount = Convert::ToInt32(addCountTxt->Text);
+			q = Ins_AfterList(v, L, q);
+
+			Scan_List(L);
+			addNumberTxt->Text = "";
+			addFamTxt->Text = "";
+			addCardTxt->Text = "";
+			addLevelBox->Text = "";
+			addCountTxt->Text = "";
+		}
+	}
+	private: System::Void sortVozrButton_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		if (sortBox->SelectedIndex < -1)
+		{
+			MessageBox::Show("Выберите поле для сортировки!", "Сортировка", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+		if (sortBox->SelectedIndex == 0) SortBySurnameAscending(L);
+		if (sortBox->SelectedIndex == 1) SortByPointsAscending(L);
+		Scan_List(L);
+	}
+	private: System::Void sortUbvButton_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		if (sortBox->SelectedIndex < -1)
+		{
+			MessageBox::Show("Выберите поле для сортировки!", "Сортировка", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+		if (sortBox->SelectedIndex == 0) SortBySurnameDescending(L);
+		if (sortBox->SelectedIndex == 1) SortByPointsDescending(L);
+		Scan_List(L);
+	}
+	private: System::Void открытьToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		if (L != nullptr) {
+			while (L != nullptr) {
+				L = DelFirst_List(L);  // Удаляем элементы с начала списка
+			}
+		}
+
+		// Чтение данных из файла и создание нового списка
+		passagers v;
+		ifstream f("FileName.txt");
+
+		if (!f.is_open())
+		{
+			// Обработка ошибки открытия файла
+			MessageBox::Show("Ошибка при открытии файла", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+
+		// Чтение первой записи
+		string phoneNumber, fam, level;
+		int cardNumber, pointCount;
+		if (f >> phoneNumber >> fam >> cardNumber >> level >> pointCount) {
+			v.phoneNumber = phoneNumber;
+			v.fam = fam;
+			v.cardNumber = cardNumber;
+			v.level = level;
+			v.pointCount = pointCount;
+			L = Init_List(v);  // Создаем первый элемент списка
+			LIST* q = L;       // Указатель на последний элемент
+
+			// Чтение остальных записей
+			while (f >> phoneNumber >> fam >> cardNumber >> level >> pointCount) {
+				v.phoneNumber = phoneNumber;
+				v.fam = fam;
+				v.cardNumber = cardNumber;
+				v.level = level;
+				v.pointCount = pointCount;
+				q = Ins_AfterList(v, L, q);  // Добавляем элементы в конец списка
+			}
+		}
+		else {
+			// Файл пустой или содержит некорректные данные
+			L = nullptr;
+		}
+
+		f.close();
+		Scan_List(L);  // Обновление отображения списка в интерфейсе
+	}
+	private: System::Void сохранитьToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		SaveListToFile(L, "passagers.txt");
+	}
+	};
 }

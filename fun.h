@@ -1,11 +1,9 @@
 #ifndef FUN_H
 #define FUN_H
-
 #include <string>
 #include <fstream>
 #include <iostream>
 #include <cstdlib>
-
 using namespace std;
 
 struct passagers {
@@ -36,25 +34,25 @@ LIST* DelFirst_List(LIST* L);
 // Удаление конкретного элемента p
 LIST* Del_List(LIST* L, LIST* p);
 
-// Поиск по фамилии (пример поиска, можно изменить по нужному полю)
+// Поиск по фамилии
 LIST* Find_BySurname(const string& surname, LIST* L);
 
 // Сохранение списка в файл
 void SaveListToFile(LIST* L, const string& filename);
 
-// Сортировка по номеру карты (по возрастанию)
-void SortByCardAscending(LIST*& L);
+// Сортировка по фамилии (по возрастанию)
+LIST* SortBySurnameAscending(LIST* L);
 
 // Сортировка по количеству баллов (по возрастанию)
-void SortByPointsAscending(LIST*& L);
+LIST* SortByPointsAscending(LIST* L);
 
-// Сортировка по номеру карты (по убыванию)
-void SortByCardDescending(LIST*& L);
+// Сортировка по фамилии (по убыванию)
+LIST* SortBySurnameDescending(LIST* L);
 
 // Сортировка по количеству баллов (по убыванию)
-void SortByPointsDescending(LIST*& L);
+LIST* SortByPointsDescending(LIST* L);
 
 // Очистка всей памяти
-void FreeList(LIST*& L);
+void FreeList(LIST* L);
 
 #endif // FUN_H

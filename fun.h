@@ -1,65 +1,60 @@
-#ifndef fun_h
-#define fun_h
+#ifndef FUN_H
+#define FUN_H
 
 #include <string>
-#include <ctime>
-#include <stdlib.h>
 #include <fstream>
-#include <msclr\marshal_cppstd.h>
-#include <msclr\marshal.h>
-using namespace System;
-using namespace System::ComponentModel;
-using namespace System::Collections;
-using namespace System::Windows::Forms;
-using namespace System::Data;
-using namespace System::Drawing;
+#include <iostream>
+#include <cstdlib>
+
 using namespace std;
-using namespace msclr::interop;
-using namespace System::Data::OleDb;
 
-struct student
-{
+struct passagers {
+    string phoneNumber;
     string fam;
-    string im;
-    int age;
+    int cardNumber;
+    string level;
+    int pointCount;
 };
 
-struct LIST
-{
-    student element;
+struct LIST {
+    passagers element;
     LIST* next;
-    LIST* previos;
 };
 
-static student x;
-static LIST* L;
-static int n;
+// Инициализация списка (создание первого элемента)
+LIST* Init_List(passagers x);
 
-// Инициализация списка
-LIST* Init_List(student x);
+// Вставка в начало списка
+LIST* Ins_FirstList(passagers x, LIST* L);
 
-// Вставка элемента в список
-LIST* Ins_FirstList(student x, LIST* L);
-
-LIST* Ins_AfterList(student x, LIST* L, LIST* p);
+// Вставка после элемента p
+LIST* Ins_AfterList(passagers x, LIST* L, LIST* p);
 
 // Удаление первого элемента
 LIST* DelFirst_List(LIST* L);
 
-// Удаление конкретного элемента
+// Удаление конкретного элемента p
 LIST* Del_List(LIST* L, LIST* p);
 
-// Поиск по направлению обучения
-LIST* Find_List_Range(student x, LIST* L);
+// Поиск по фамилии (пример поиска, можно изменить по нужному полю)
+LIST* Find_BySurname(const string& surname, LIST* L);
 
-void savest(LIST* L);
+// Сохранение списка в файл
+void SaveListToFile(LIST* L, const string& filename);
 
-void sort_fam_1(LIST* L);
+// Сортировка по номеру карты (по возрастанию)
+void SortByCardAscending(LIST*& L);
 
-void sort_age_1(LIST* L);
+// Сортировка по количеству баллов (по возрастанию)
+void SortByPointsAscending(LIST*& L);
 
-void sort_fam_2(LIST* L);
+// Сортировка по номеру карты (по убыванию)
+void SortByCardDescending(LIST*& L);
 
-void sort_age_2(LIST* L);
+// Сортировка по количеству баллов (по убыванию)
+void SortByPointsDescending(LIST*& L);
 
-#endif fun_h
+// Очистка всей памяти
+void FreeList(LIST*& L);
+
+#endif // FUN_H

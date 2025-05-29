@@ -46,43 +46,73 @@ namespace Krsv {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::DataGridView^ dataGridView1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
-	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::Button^ button2;
-	private: System::Windows::Forms::Button^ button3;
-	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::TextBox^ textBox2;
-	private: System::Windows::Forms::TextBox^ textBox3;
-	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::Button^ button4;
-	private: System::Windows::Forms::TextBox^ textBox4;
-	private: System::Windows::Forms::Button^ button5;
+	private: System::Windows::Forms::DataGridView^ fullGrid;
+	private: System::Windows::Forms::DataGridView^ cardGrid;
+	protected:
+	private: System::Windows::Forms::MenuStrip^ menuStrip1;
+	private: System::Windows::Forms::ToolStripMenuItem^ файлToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ открытьToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ сохранитьToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ очиститьToolStripMenuItem;
 	private: System::Windows::Forms::Label^ label4;
-	private: System::Windows::Forms::ComboBox^ comboBox1;
-	private: System::Windows::Forms::Label^ label5;
-	private: System::Windows::Forms::Button^ button6;
-	private: System::Windows::Forms::Button^ button7;
-	private: System::Windows::Forms::GroupBox^ groupBox2;
-	private: System::Windows::Forms::GroupBox^ groupBox3;
-	private: System::Windows::Forms::DataGridView^ dataGridView2;
+	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column6;
-	private: System::Windows::Forms::TextBox^ textBox5;
-	private: System::Windows::Forms::Button^ button8;
-	private: System::Windows::Forms::GroupBox^ groupBox1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column9;
+	private: System::Windows::Forms::Label^ label5;
+	private: System::Windows::Forms::Button^ addPointButton;
+	private: System::Windows::Forms::TextBox^ changePointTxt;
+	private: System::Windows::Forms::ComboBox^ changePointBox;
+	private: System::Windows::Forms::TextBox^ cardNumTxt;
+	private: System::Windows::Forms::GroupBox^ ChangeData;
+	private: System::Windows::Forms::GroupBox^ groupBox2;
+	private: System::Windows::Forms::GroupBox^ groupBox3;
+	private: System::Windows::Forms::Button^ changeLevelButton;
+	private: System::Windows::Forms::ComboBox^ comboBox2;
+	private: System::Windows::Forms::GroupBox^ addPassager;
+	private: System::Windows::Forms::ComboBox^ addLevelBox;
+	private: System::Windows::Forms::Button^ addButton;
+	private: System::Windows::Forms::Label^ label7;
+	private: System::Windows::Forms::Label^ label6;
+	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::TextBox^ addCountTxt;
+	private: System::Windows::Forms::TextBox^ addCardTxt;
+	private: System::Windows::Forms::TextBox^ addFamTxt;
+	private: System::Windows::Forms::TextBox^ addNumberTxt;
 
 
 
+
+
+	private: System::Windows::Forms::ComboBox^ sortBox;
+	private: System::Windows::Forms::Button^ sortVozrButton;
+	private: System::Windows::Forms::Button^ sortUbvButton;
+	private: System::Windows::Forms::GroupBox^ Sort;
+	private: System::Windows::Forms::GroupBox^ Search;
+	private: System::Windows::Forms::DataGridView^ searchGrid;
+
+
+
+
+
+	private: System::Windows::Forms::Button^ searchButton;
+	private: System::Windows::Forms::TextBox^ searchTxt;
+	private: System::Windows::Forms::ComboBox^ searchBox;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ fullPhoneColumn;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ fullFamColumn;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ fullCardColumn;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ fullLevelColumn;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ fullPointColumn;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ searchPhoneColumn;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ searchFamColumn;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ searchCardColumn;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ searchLevelColumn;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ searchPointColumn;
 	protected:
-
 	protected:
-
 	private:
 		/// <summary>
 		/// Обязательная переменная конструктора.
@@ -96,377 +126,658 @@ namespace Krsv {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->button4 = (gcnew System::Windows::Forms::Button());
-			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
-			this->button5 = (gcnew System::Windows::Forms::Button());
-			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
-			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->button6 = (gcnew System::Windows::Forms::Button());
-			this->button7 = (gcnew System::Windows::Forms::Button());
-			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
-			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
-			this->dataGridView2 = (gcnew System::Windows::Forms::DataGridView());
+			this->fullGrid = (gcnew System::Windows::Forms::DataGridView());
+			this->fullPhoneColumn = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->fullFamColumn = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->fullCardColumn = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->fullLevelColumn = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->fullPointColumn = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->cardGrid = (gcnew System::Windows::Forms::DataGridView());
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
-			this->button8 = (gcnew System::Windows::Forms::Button());
-			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
-			this->groupBox2->SuspendLayout();
+			this->Column9 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
+			this->файлToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->открытьToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->сохранитьToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->очиститьToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->addPointButton = (gcnew System::Windows::Forms::Button());
+			this->changePointTxt = (gcnew System::Windows::Forms::TextBox());
+			this->changePointBox = (gcnew System::Windows::Forms::ComboBox());
+			this->cardNumTxt = (gcnew System::Windows::Forms::TextBox());
+			this->ChangeData = (gcnew System::Windows::Forms::GroupBox());
+			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
+			this->changeLevelButton = (gcnew System::Windows::Forms::Button());
+			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
+			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->addPassager = (gcnew System::Windows::Forms::GroupBox());
+			this->addLevelBox = (gcnew System::Windows::Forms::ComboBox());
+			this->addButton = (gcnew System::Windows::Forms::Button());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->addCountTxt = (gcnew System::Windows::Forms::TextBox());
+			this->addCardTxt = (gcnew System::Windows::Forms::TextBox());
+			this->addFamTxt = (gcnew System::Windows::Forms::TextBox());
+			this->addNumberTxt = (gcnew System::Windows::Forms::TextBox());
+			this->sortBox = (gcnew System::Windows::Forms::ComboBox());
+			this->sortVozrButton = (gcnew System::Windows::Forms::Button());
+			this->sortUbvButton = (gcnew System::Windows::Forms::Button());
+			this->Sort = (gcnew System::Windows::Forms::GroupBox());
+			this->Search = (gcnew System::Windows::Forms::GroupBox());
+			this->searchGrid = (gcnew System::Windows::Forms::DataGridView());
+			this->searchPhoneColumn = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->searchFamColumn = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->searchCardColumn = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->searchLevelColumn = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->searchPointColumn = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->searchButton = (gcnew System::Windows::Forms::Button());
+			this->searchTxt = (gcnew System::Windows::Forms::TextBox());
+			this->searchBox = (gcnew System::Windows::Forms::ComboBox());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->fullGrid))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->cardGrid))->BeginInit();
+			this->menuStrip1->SuspendLayout();
+			this->ChangeData->SuspendLayout();
 			this->groupBox3->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->BeginInit();
-			this->groupBox1->SuspendLayout();
+			this->groupBox2->SuspendLayout();
+			this->addPassager->SuspendLayout();
+			this->Sort->SuspendLayout();
+			this->Search->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->searchGrid))->BeginInit();
 			this->SuspendLayout();
 			// 
-			// dataGridView1
+			// fullGrid
 			// 
-			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
-				this->Column1,
-					this->Column2, this->Column3
+			this->fullGrid->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->fullGrid->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
+				this->fullPhoneColumn,
+					this->fullFamColumn, this->fullCardColumn, this->fullLevelColumn, this->fullPointColumn
 			});
-			this->dataGridView1->GridColor = System::Drawing::SystemColors::ActiveCaption;
-			this->dataGridView1->Location = System::Drawing::Point(12, 12);
-			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->ReadOnly = true;
-			this->dataGridView1->RowHeadersWidth = 62;
-			this->dataGridView1->RowTemplate->Height = 28;
-			this->dataGridView1->Size = System::Drawing::Size(849, 270);
-			this->dataGridView1->TabIndex = 0;
+			this->fullGrid->GridColor = System::Drawing::SystemColors::ActiveCaption;
+			this->fullGrid->Location = System::Drawing::Point(12, 36);
+			this->fullGrid->Name = L"fullGrid";
+			this->fullGrid->ReadOnly = true;
+			this->fullGrid->RowHeadersWidth = 62;
+			this->fullGrid->RowTemplate->Height = 28;
+			this->fullGrid->Size = System::Drawing::Size(849, 386);
+			this->fullGrid->TabIndex = 0;
 			// 
-			// Column1
+			// fullPhoneColumn
 			// 
-			this->Column1->HeaderText = L"Фамилия";
-			this->Column1->MinimumWidth = 8;
-			this->Column1->Name = L"Column1";
-			this->Column1->ReadOnly = true;
-			this->Column1->Width = 150;
+			this->fullPhoneColumn->HeaderText = L"Телефон";
+			this->fullPhoneColumn->MinimumWidth = 8;
+			this->fullPhoneColumn->Name = L"fullPhoneColumn";
+			this->fullPhoneColumn->ReadOnly = true;
+			this->fullPhoneColumn->Width = 150;
 			// 
-			// Column2
+			// fullFamColumn
 			// 
-			this->Column2->HeaderText = L"Имя";
-			this->Column2->MinimumWidth = 8;
-			this->Column2->Name = L"Column2";
-			this->Column2->ReadOnly = true;
-			this->Column2->Width = 150;
+			this->fullFamColumn->HeaderText = L"Фамилия И О";
+			this->fullFamColumn->MinimumWidth = 8;
+			this->fullFamColumn->Name = L"fullFamColumn";
+			this->fullFamColumn->ReadOnly = true;
+			this->fullFamColumn->Width = 150;
 			// 
-			// Column3
+			// fullCardColumn
 			// 
-			this->Column3->HeaderText = L"Возраст";
-			this->Column3->MinimumWidth = 8;
-			this->Column3->Name = L"Column3";
-			this->Column3->ReadOnly = true;
-			this->Column3->Width = 150;
+			this->fullCardColumn->HeaderText = L"Номер бонусной карты";
+			this->fullCardColumn->MinimumWidth = 8;
+			this->fullCardColumn->Name = L"fullCardColumn";
+			this->fullCardColumn->ReadOnly = true;
+			this->fullCardColumn->Width = 150;
 			// 
-			// button1
+			// fullLevelColumn
 			// 
-			this->button1->Location = System::Drawing::Point(12, 288);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(191, 68);
-			this->button1->TabIndex = 2;
-			this->button1->Text = L"Открыть";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &adminUI::button1_Click);
+			this->fullLevelColumn->HeaderText = L"Уровень лояльности";
+			this->fullLevelColumn->MinimumWidth = 8;
+			this->fullLevelColumn->Name = L"fullLevelColumn";
+			this->fullLevelColumn->ReadOnly = true;
+			this->fullLevelColumn->Width = 150;
 			// 
-			// button2
+			// fullPointColumn
 			// 
-			this->button2->Location = System::Drawing::Point(331, 291);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(191, 68);
-			this->button2->TabIndex = 3;
-			this->button2->Text = L"Сохранить";
-			this->button2->UseVisualStyleBackColor = true;
-			this->button2->Click += gcnew System::EventHandler(this, &adminUI::button2_Click);
+			this->fullPointColumn->HeaderText = L"Кол-во баллов";
+			this->fullPointColumn->MinimumWidth = 8;
+			this->fullPointColumn->Name = L"fullPointColumn";
+			this->fullPointColumn->ReadOnly = true;
+			this->fullPointColumn->Width = 150;
 			// 
-			// button3
+			// cardGrid
 			// 
-			this->button3->Location = System::Drawing::Point(670, 288);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(191, 68);
-			this->button3->TabIndex = 4;
-			this->button3->Text = L"Очистить";
-			this->button3->UseVisualStyleBackColor = true;
-			this->button3->Click += gcnew System::EventHandler(this, &adminUI::button3_Click);
-			// 
-			// textBox1
-			// 
-			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->textBox1->Location = System::Drawing::Point(1115, 22);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(237, 35);
-			this->textBox1->TabIndex = 5;
-			// 
-			// textBox2
-			// 
-			this->textBox2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->textBox2->Location = System::Drawing::Point(1115, 63);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(237, 35);
-			this->textBox2->TabIndex = 6;
-			// 
-			// textBox3
-			// 
-			this->textBox3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->textBox3->Location = System::Drawing::Point(1115, 104);
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(237, 35);
-			this->textBox3->TabIndex = 7;
-			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->label1->Location = System::Drawing::Point(983, 22);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(123, 29);
-			this->label1->TabIndex = 8;
-			this->label1->Text = L"Фамилия";
-			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->label2->Location = System::Drawing::Point(1043, 63);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(63, 29);
-			this->label2->TabIndex = 9;
-			this->label2->Text = L"Имя";
-			// 
-			// label3
-			// 
-			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->label3->Location = System::Drawing::Point(999, 104);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(107, 29);
-			this->label3->TabIndex = 10;
-			this->label3->Text = L"Возраст";
-			// 
-			// button4
-			// 
-			this->button4->Location = System::Drawing::Point(1140, 145);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(191, 47);
-			this->button4->TabIndex = 11;
-			this->button4->Text = L"Добавить";
-			this->button4->UseVisualStyleBackColor = true;
-			this->button4->Click += gcnew System::EventHandler(this, &adminUI::button4_Click);
-			// 
-			// textBox4
-			// 
-			this->textBox4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->textBox4->Location = System::Drawing::Point(27, 77);
-			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(237, 35);
-			this->textBox4->TabIndex = 12;
-			// 
-			// button5
-			// 
-			this->button5->Location = System::Drawing::Point(270, 74);
-			this->button5->Name = L"button5";
-			this->button5->Size = System::Drawing::Size(191, 38);
-			this->button5->TabIndex = 13;
-			this->button5->Text = L"Найти";
-			this->button5->UseVisualStyleBackColor = true;
-			this->button5->Click += gcnew System::EventHandler(this, &adminUI::button5_Click);
-			// 
-			// label4
-			// 
-			this->label4->AutoSize = true;
-			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->label4->Location = System::Drawing::Point(22, 39);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(229, 29);
-			this->label4->TabIndex = 14;
-			this->label4->Text = L"Введите фамилию";
-			// 
-			// comboBox1
-			// 
-			this->comboBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Имя", L"Возраст" });
-			this->comboBox1->Location = System::Drawing::Point(27, 76);
-			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(237, 37);
-			this->comboBox1->TabIndex = 15;
-			// 
-			// label5
-			// 
-			this->label5->AutoSize = true;
-			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->label5->Location = System::Drawing::Point(48, 44);
-			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(193, 29);
-			this->label5->TabIndex = 16;
-			this->label5->Text = L"Выберите поле";
-			// 
-			// button6
-			// 
-			this->button6->Location = System::Drawing::Point(60, 136);
-			this->button6->Name = L"button6";
-			this->button6->Size = System::Drawing::Size(191, 38);
-			this->button6->TabIndex = 17;
-			this->button6->Text = L"По возрастанию";
-			this->button6->UseVisualStyleBackColor = true;
-			this->button6->Click += gcnew System::EventHandler(this, &adminUI::button6_Click);
-			// 
-			// button7
-			// 
-			this->button7->Location = System::Drawing::Point(270, 136);
-			this->button7->Name = L"button7";
-			this->button7->Size = System::Drawing::Size(191, 38);
-			this->button7->TabIndex = 18;
-			this->button7->Text = L"По убыванию";
-			this->button7->UseVisualStyleBackColor = true;
-			this->button7->Click += gcnew System::EventHandler(this, &adminUI::button7_Click);
-			// 
-			// groupBox2
-			// 
-			this->groupBox2->Controls->Add(this->button5);
-			this->groupBox2->Controls->Add(this->textBox4);
-			this->groupBox2->Controls->Add(this->label4);
-			this->groupBox2->Location = System::Drawing::Point(885, 198);
-			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(467, 138);
-			this->groupBox2->TabIndex = 20;
-			this->groupBox2->TabStop = false;
-			this->groupBox2->Text = L"Поиск";
-			// 
-			// groupBox3
-			// 
-			this->groupBox3->Controls->Add(this->button7);
-			this->groupBox3->Controls->Add(this->comboBox1);
-			this->groupBox3->Controls->Add(this->label5);
-			this->groupBox3->Controls->Add(this->button6);
-			this->groupBox3->Location = System::Drawing::Point(885, 342);
-			this->groupBox3->Name = L"groupBox3";
-			this->groupBox3->Size = System::Drawing::Size(467, 180);
-			this->groupBox3->TabIndex = 21;
-			this->groupBox3->TabStop = false;
-			this->groupBox3->Text = L"Сортировка";
-			// 
-			// dataGridView2
-			// 
-			this->dataGridView2->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView2->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
-				this->Column4,
-					this->Column5, this->Column6
+			this->cardGrid->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->cardGrid->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
+				this->Column4, this->Column5,
+					this->Column6, this->Column9
 			});
-			this->dataGridView2->Location = System::Drawing::Point(12, 365);
-			this->dataGridView2->Name = L"dataGridView2";
-			this->dataGridView2->RowHeadersWidth = 62;
-			this->dataGridView2->RowTemplate->Height = 28;
-			this->dataGridView2->Size = System::Drawing::Size(849, 270);
-			this->dataGridView2->TabIndex = 22;
+			this->cardGrid->Location = System::Drawing::Point(517, 61);
+			this->cardGrid->Name = L"cardGrid";
+			this->cardGrid->RowHeadersWidth = 62;
+			this->cardGrid->RowTemplate->Height = 28;
+			this->cardGrid->Size = System::Drawing::Size(896, 258);
+			this->cardGrid->TabIndex = 22;
 			// 
 			// Column4
 			// 
-			this->Column4->HeaderText = L"Column4";
+			this->Column4->HeaderText = L"Дата";
 			this->Column4->MinimumWidth = 8;
 			this->Column4->Name = L"Column4";
 			this->Column4->Width = 150;
 			// 
 			// Column5
 			// 
-			this->Column5->HeaderText = L"Column5";
+			this->Column5->HeaderText = L"Время";
 			this->Column5->MinimumWidth = 8;
 			this->Column5->Name = L"Column5";
 			this->Column5->Width = 150;
 			// 
 			// Column6
 			// 
-			this->Column6->HeaderText = L"Column6";
+			this->Column6->HeaderText = L"Тип";
 			this->Column6->MinimumWidth = 8;
 			this->Column6->Name = L"Column6";
 			this->Column6->Width = 150;
 			// 
-			// textBox5
+			// Column9
 			// 
-			this->textBox5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->Column9->HeaderText = L"Количество";
+			this->Column9->MinimumWidth = 8;
+			this->Column9->Name = L"Column9";
+			this->Column9->Width = 150;
+			// 
+			// menuStrip1
+			// 
+			this->menuStrip1->GripMargin = System::Windows::Forms::Padding(2, 2, 0, 2);
+			this->menuStrip1->ImageScalingSize = System::Drawing::Size(24, 24);
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->файлToolStripMenuItem });
+			this->menuStrip1->Location = System::Drawing::Point(0, 0);
+			this->menuStrip1->Name = L"menuStrip1";
+			this->menuStrip1->Size = System::Drawing::Size(1462, 33);
+			this->menuStrip1->TabIndex = 25;
+			this->menuStrip1->Text = L"menuStrip1";
+			// 
+			// файлToolStripMenuItem
+			// 
+			this->файлToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+				this->открытьToolStripMenuItem,
+					this->сохранитьToolStripMenuItem, this->очиститьToolStripMenuItem
+			});
+			this->файлToolStripMenuItem->Name = L"файлToolStripMenuItem";
+			this->файлToolStripMenuItem->Size = System::Drawing::Size(69, 29);
+			this->файлToolStripMenuItem->Text = L"Файл";
+			// 
+			// открытьToolStripMenuItem
+			// 
+			this->открытьToolStripMenuItem->Name = L"открытьToolStripMenuItem";
+			this->открытьToolStripMenuItem->Size = System::Drawing::Size(200, 34);
+			this->открытьToolStripMenuItem->Text = L"Открыть";
+			// 
+			// сохранитьToolStripMenuItem
+			// 
+			this->сохранитьToolStripMenuItem->Name = L"сохранитьToolStripMenuItem";
+			this->сохранитьToolStripMenuItem->Size = System::Drawing::Size(200, 34);
+			this->сохранитьToolStripMenuItem->Text = L"Сохранить";
+			// 
+			// очиститьToolStripMenuItem
+			// 
+			this->очиститьToolStripMenuItem->Name = L"очиститьToolStripMenuItem";
+			this->очиститьToolStripMenuItem->Size = System::Drawing::Size(200, 34);
+			this->очиститьToolStripMenuItem->Text = L"Очистить";
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->textBox5->Location = System::Drawing::Point(27, 41);
-			this->textBox5->Name = L"textBox5";
-			this->textBox5->Size = System::Drawing::Size(237, 35);
-			this->textBox5->TabIndex = 23;
+			this->label5->Location = System::Drawing::Point(1300, 22);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(23, 25);
+			this->label5->TabIndex = 26;
+			this->label5->Text = L"0";
 			// 
-			// button8
+			// label4
 			// 
-			this->button8->Location = System::Drawing::Point(270, 38);
-			this->button8->Name = L"button8";
-			this->button8->Size = System::Drawing::Size(191, 38);
-			this->button8->TabIndex = 19;
-			this->button8->Text = L"Удалить";
-			this->button8->UseVisualStyleBackColor = true;
-			this->button8->Click += gcnew System::EventHandler(this, &adminUI::button8_Click);
+			this->label4->AutoSize = true;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label4->Location = System::Drawing::Point(1009, 22);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(285, 25);
+			this->label4->TabIndex = 25;
+			this->label4->Text = L"Количество баллов на карте:";
 			// 
-			// groupBox1
+			// button1
 			// 
-			this->groupBox1->Controls->Add(this->textBox5);
-			this->groupBox1->Controls->Add(this->button8);
-			this->groupBox1->Location = System::Drawing::Point(885, 528);
-			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(467, 95);
-			this->groupBox1->TabIndex = 15;
-			this->groupBox1->TabStop = false;
-			this->groupBox1->Text = L"Удалить по фамилии";
+			this->button1->Location = System::Drawing::Point(320, 22);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(191, 38);
+			this->button1->TabIndex = 17;
+			this->button1->Text = L"Просмотр";
+			this->button1->UseVisualStyleBackColor = true;
+			// 
+			// addPointButton
+			// 
+			this->addPointButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->addPointButton->Location = System::Drawing::Point(300, 79);
+			this->addPointButton->Name = L"addPointButton";
+			this->addPointButton->Size = System::Drawing::Size(144, 41);
+			this->addPointButton->TabIndex = 28;
+			this->addPointButton->Text = L"Начислить";
+			this->addPointButton->UseVisualStyleBackColor = true;
+			// 
+			// changePointTxt
+			// 
+			this->changePointTxt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->changePointTxt->Location = System::Drawing::Point(203, 43);
+			this->changePointTxt->Name = L"changePointTxt";
+			this->changePointTxt->Size = System::Drawing::Size(100, 30);
+			this->changePointTxt->TabIndex = 29;
+			// 
+			// changePointBox
+			// 
+			this->changePointBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->changePointBox->FormattingEnabled = true;
+			this->changePointBox->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Добавить", L"Убавить" });
+			this->changePointBox->Location = System::Drawing::Point(6, 40);
+			this->changePointBox->Name = L"changePointBox";
+			this->changePointBox->Size = System::Drawing::Size(191, 33);
+			this->changePointBox->TabIndex = 30;
+			// 
+			// cardNumTxt
+			// 
+			this->cardNumTxt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->cardNumTxt->Location = System::Drawing::Point(6, 25);
+			this->cardNumTxt->Name = L"cardNumTxt";
+			this->cardNumTxt->Size = System::Drawing::Size(297, 30);
+			this->cardNumTxt->TabIndex = 31;
+			this->cardNumTxt->Text = L"Номер карты";
+			// 
+			// ChangeData
+			// 
+			this->ChangeData->Controls->Add(this->label5);
+			this->ChangeData->Controls->Add(this->groupBox3);
+			this->ChangeData->Controls->Add(this->label4);
+			this->ChangeData->Controls->Add(this->groupBox2);
+			this->ChangeData->Controls->Add(this->cardNumTxt);
+			this->ChangeData->Controls->Add(this->button1);
+			this->ChangeData->Controls->Add(this->cardGrid);
+			this->ChangeData->Location = System::Drawing::Point(12, 634);
+			this->ChangeData->Name = L"ChangeData";
+			this->ChangeData->Size = System::Drawing::Size(1425, 325);
+			this->ChangeData->TabIndex = 32;
+			this->ChangeData->TabStop = false;
+			this->ChangeData->Text = L"Управление пользователем";
+			// 
+			// groupBox3
+			// 
+			this->groupBox3->Controls->Add(this->changeLevelButton);
+			this->groupBox3->Controls->Add(this->comboBox2);
+			this->groupBox3->Location = System::Drawing::Point(6, 194);
+			this->groupBox3->Name = L"groupBox3";
+			this->groupBox3->Size = System::Drawing::Size(450, 127);
+			this->groupBox3->TabIndex = 33;
+			this->groupBox3->TabStop = false;
+			this->groupBox3->Text = L"Изменить уровень лояльности";
+			// 
+			// changeLevelButton
+			// 
+			this->changeLevelButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->changeLevelButton->Location = System::Drawing::Point(300, 79);
+			this->changeLevelButton->Name = L"changeLevelButton";
+			this->changeLevelButton->Size = System::Drawing::Size(144, 41);
+			this->changeLevelButton->TabIndex = 28;
+			this->changeLevelButton->Text = L"Изменить";
+			this->changeLevelButton->UseVisualStyleBackColor = true;
+			// 
+			// comboBox2
+			// 
+			this->comboBox2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->comboBox2->FormattingEnabled = true;
+			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"Bronze", L"Silver", L"Gold", L"Brilliand" });
+			this->comboBox2->Location = System::Drawing::Point(6, 40);
+			this->comboBox2->Name = L"comboBox2";
+			this->comboBox2->Size = System::Drawing::Size(191, 33);
+			this->comboBox2->TabIndex = 30;
+			// 
+			// groupBox2
+			// 
+			this->groupBox2->Controls->Add(this->addPointButton);
+			this->groupBox2->Controls->Add(this->changePointBox);
+			this->groupBox2->Controls->Add(this->changePointTxt);
+			this->groupBox2->Location = System::Drawing::Point(6, 61);
+			this->groupBox2->Name = L"groupBox2";
+			this->groupBox2->Size = System::Drawing::Size(450, 127);
+			this->groupBox2->TabIndex = 32;
+			this->groupBox2->TabStop = false;
+			this->groupBox2->Text = L"Изменение баллов";
+			// 
+			// addPassager
+			// 
+			this->addPassager->Controls->Add(this->addLevelBox);
+			this->addPassager->Controls->Add(this->addButton);
+			this->addPassager->Controls->Add(this->label7);
+			this->addPassager->Controls->Add(this->label6);
+			this->addPassager->Controls->Add(this->label3);
+			this->addPassager->Controls->Add(this->label2);
+			this->addPassager->Controls->Add(this->label1);
+			this->addPassager->Controls->Add(this->addCountTxt);
+			this->addPassager->Controls->Add(this->addCardTxt);
+			this->addPassager->Controls->Add(this->addFamTxt);
+			this->addPassager->Controls->Add(this->addNumberTxt);
+			this->addPassager->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->addPassager->Location = System::Drawing::Point(881, 36);
+			this->addPassager->Name = L"addPassager";
+			this->addPassager->Size = System::Drawing::Size(425, 386);
+			this->addPassager->TabIndex = 33;
+			this->addPassager->TabStop = false;
+			this->addPassager->Text = L"Добавить пользователя";
+			// 
+			// addLevelBox
+			// 
+			this->addLevelBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->addLevelBox->FormattingEnabled = true;
+			this->addLevelBox->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"Bronze", L"Silver", L"Gold", L"Brilliand" });
+			this->addLevelBox->Location = System::Drawing::Point(196, 191);
+			this->addLevelBox->Name = L"addLevelBox";
+			this->addLevelBox->Size = System::Drawing::Size(220, 33);
+			this->addLevelBox->TabIndex = 31;
+			// 
+			// addButton
+			// 
+			this->addButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->addButton->Location = System::Drawing::Point(196, 307);
+			this->addButton->Name = L"addButton";
+			this->addButton->Size = System::Drawing::Size(220, 41);
+			this->addButton->TabIndex = 29;
+			this->addButton->Text = L"Добавить";
+			this->addButton->UseVisualStyleBackColor = true;
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label7->Location = System::Drawing::Point(16, 230);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(174, 22);
+			this->label7->TabIndex = 9;
+			this->label7->Text = L"Количество баллов";
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label6->Location = System::Drawing::Point(8, 191);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(182, 22);
+			this->label6->TabIndex = 8;
+			this->label6->Text = L"Уровень лояльности";
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label3->Location = System::Drawing::Point(69, 155);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(121, 22);
+			this->label3->TabIndex = 7;
+			this->label3->Text = L"Номер карты";
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label2->Location = System::Drawing::Point(102, 119);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(88, 22);
+			this->label2->TabIndex = 6;
+			this->label2->Text = L"Фамилия";
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label1->Location = System::Drawing::Point(37, 83);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(153, 22);
+			this->label1->TabIndex = 5;
+			this->label1->Text = L"Номер телефона";
+			// 
+			// addCountTxt
+			// 
+			this->addCountTxt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->addCountTxt->Location = System::Drawing::Point(196, 230);
+			this->addCountTxt->Name = L"addCountTxt";
+			this->addCountTxt->Size = System::Drawing::Size(220, 30);
+			this->addCountTxt->TabIndex = 4;
+			// 
+			// addCardTxt
+			// 
+			this->addCardTxt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->addCardTxt->Location = System::Drawing::Point(196, 155);
+			this->addCardTxt->Name = L"addCardTxt";
+			this->addCardTxt->Size = System::Drawing::Size(220, 30);
+			this->addCardTxt->TabIndex = 2;
+			// 
+			// addFamTxt
+			// 
+			this->addFamTxt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->addFamTxt->Location = System::Drawing::Point(196, 119);
+			this->addFamTxt->Name = L"addFamTxt";
+			this->addFamTxt->Size = System::Drawing::Size(220, 30);
+			this->addFamTxt->TabIndex = 1;
+			// 
+			// addNumberTxt
+			// 
+			this->addNumberTxt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->addNumberTxt->Location = System::Drawing::Point(196, 83);
+			this->addNumberTxt->Name = L"addNumberTxt";
+			this->addNumberTxt->Size = System::Drawing::Size(220, 30);
+			this->addNumberTxt->TabIndex = 0;
+			// 
+			// sortBox
+			// 
+			this->sortBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->sortBox->FormattingEnabled = true;
+			this->sortBox->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Номер бонусной карты", L"Количество баллов" });
+			this->sortBox->Location = System::Drawing::Point(6, 38);
+			this->sortBox->Name = L"sortBox";
+			this->sortBox->Size = System::Drawing::Size(247, 33);
+			this->sortBox->TabIndex = 34;
+			// 
+			// sortVozrButton
+			// 
+			this->sortVozrButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->sortVozrButton->Location = System::Drawing::Point(6, 106);
+			this->sortVozrButton->Name = L"sortVozrButton";
+			this->sortVozrButton->Size = System::Drawing::Size(247, 33);
+			this->sortVozrButton->TabIndex = 35;
+			this->sortVozrButton->Text = L"По возрастанию";
+			this->sortVozrButton->UseVisualStyleBackColor = true;
+			// 
+			// sortUbvButton
+			// 
+			this->sortUbvButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->sortUbvButton->Location = System::Drawing::Point(5, 145);
+			this->sortUbvButton->Name = L"sortUbvButton";
+			this->sortUbvButton->Size = System::Drawing::Size(247, 33);
+			this->sortUbvButton->TabIndex = 36;
+			this->sortUbvButton->Text = L"По убыванию";
+			this->sortUbvButton->UseVisualStyleBackColor = true;
+			// 
+			// Sort
+			// 
+			this->Sort->Controls->Add(this->sortVozrButton);
+			this->Sort->Controls->Add(this->sortUbvButton);
+			this->Sort->Controls->Add(this->sortBox);
+			this->Sort->Location = System::Drawing::Point(12, 428);
+			this->Sort->Name = L"Sort";
+			this->Sort->Size = System::Drawing::Size(258, 200);
+			this->Sort->TabIndex = 37;
+			this->Sort->TabStop = false;
+			this->Sort->Text = L"Сортировка";
+			// 
+			// Search
+			// 
+			this->Search->Controls->Add(this->searchGrid);
+			this->Search->Controls->Add(this->searchButton);
+			this->Search->Controls->Add(this->searchTxt);
+			this->Search->Controls->Add(this->searchBox);
+			this->Search->Location = System::Drawing::Point(276, 428);
+			this->Search->Name = L"Search";
+			this->Search->Size = System::Drawing::Size(1161, 200);
+			this->Search->TabIndex = 39;
+			this->Search->TabStop = false;
+			this->Search->Text = L"Поиск";
+			// 
+			// searchGrid
+			// 
+			this->searchGrid->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->searchGrid->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
+				this->searchPhoneColumn,
+					this->searchFamColumn, this->searchCardColumn, this->searchLevelColumn, this->searchPointColumn
+			});
+			this->searchGrid->GridColor = System::Drawing::SystemColors::ActiveCaption;
+			this->searchGrid->Location = System::Drawing::Point(259, 25);
+			this->searchGrid->Name = L"searchGrid";
+			this->searchGrid->ReadOnly = true;
+			this->searchGrid->RowHeadersWidth = 62;
+			this->searchGrid->RowTemplate->Height = 28;
+			this->searchGrid->Size = System::Drawing::Size(896, 169);
+			this->searchGrid->TabIndex = 40;
+			// 
+			// searchPhoneColumn
+			// 
+			this->searchPhoneColumn->HeaderText = L"Телефон";
+			this->searchPhoneColumn->MinimumWidth = 8;
+			this->searchPhoneColumn->Name = L"searchPhoneColumn";
+			this->searchPhoneColumn->ReadOnly = true;
+			this->searchPhoneColumn->Width = 150;
+			// 
+			// searchFamColumn
+			// 
+			this->searchFamColumn->HeaderText = L"Фамилия И О";
+			this->searchFamColumn->MinimumWidth = 8;
+			this->searchFamColumn->Name = L"searchFamColumn";
+			this->searchFamColumn->ReadOnly = true;
+			this->searchFamColumn->Width = 150;
+			// 
+			// searchCardColumn
+			// 
+			this->searchCardColumn->HeaderText = L"Номер бонусной карты";
+			this->searchCardColumn->MinimumWidth = 8;
+			this->searchCardColumn->Name = L"searchCardColumn";
+			this->searchCardColumn->ReadOnly = true;
+			this->searchCardColumn->Width = 150;
+			// 
+			// searchLevelColumn
+			// 
+			this->searchLevelColumn->HeaderText = L"Уровень лояльности";
+			this->searchLevelColumn->MinimumWidth = 8;
+			this->searchLevelColumn->Name = L"searchLevelColumn";
+			this->searchLevelColumn->ReadOnly = true;
+			this->searchLevelColumn->Width = 150;
+			// 
+			// searchPointColumn
+			// 
+			this->searchPointColumn->HeaderText = L"Кол-во баллов";
+			this->searchPointColumn->MinimumWidth = 8;
+			this->searchPointColumn->Name = L"searchPointColumn";
+			this->searchPointColumn->ReadOnly = true;
+			this->searchPointColumn->Width = 150;
+			// 
+			// searchButton
+			// 
+			this->searchButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->searchButton->Location = System::Drawing::Point(6, 145);
+			this->searchButton->Name = L"searchButton";
+			this->searchButton->Size = System::Drawing::Size(247, 33);
+			this->searchButton->TabIndex = 37;
+			this->searchButton->Text = L"Поиск";
+			this->searchButton->UseVisualStyleBackColor = true;
+			this->searchButton->Click += gcnew System::EventHandler(this, &adminUI::searchButton_Click);
+			// 
+			// searchTxt
+			// 
+			this->searchTxt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->searchTxt->Location = System::Drawing::Point(6, 109);
+			this->searchTxt->Name = L"searchTxt";
+			this->searchTxt->Size = System::Drawing::Size(247, 30);
+			this->searchTxt->TabIndex = 36;
+			// 
+			// searchBox
+			// 
+			this->searchBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->searchBox->FormattingEnabled = true;
+			this->searchBox->Items->AddRange(gcnew cli::array< System::Object^  >(4) {
+				L"Телефон", L"Фамилия И. О.", L"Номер бонусной карты",
+					L"Уровень лояльности"
+			});
+			this->searchBox->Location = System::Drawing::Point(6, 38);
+			this->searchBox->Name = L"searchBox";
+			this->searchBox->Size = System::Drawing::Size(247, 33);
+			this->searchBox->TabIndex = 35;
 			// 
 			// adminUI
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->ClientSize = System::Drawing::Size(1364, 644);
-			this->Controls->Add(this->groupBox1);
-			this->Controls->Add(this->dataGridView2);
-			this->Controls->Add(this->textBox3);
-			this->Controls->Add(this->groupBox3);
-			this->Controls->Add(this->textBox1);
-			this->Controls->Add(this->groupBox2);
-			this->Controls->Add(this->textBox2);
-			this->Controls->Add(this->label1);
-			this->Controls->Add(this->label2);
-			this->Controls->Add(this->button3);
-			this->Controls->Add(this->label3);
-			this->Controls->Add(this->button2);
-			this->Controls->Add(this->button4);
-			this->Controls->Add(this->button1);
-			this->Controls->Add(this->dataGridView1);
+			this->ClientSize = System::Drawing::Size(1462, 1022);
+			this->Controls->Add(this->Search);
+			this->Controls->Add(this->Sort);
+			this->Controls->Add(this->addPassager);
+			this->Controls->Add(this->ChangeData);
+			this->Controls->Add(this->fullGrid);
+			this->Controls->Add(this->menuStrip1);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
+			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"adminUI";
 			this->Text = L"adminUI";
 			this->Activated += gcnew System::EventHandler(this, &adminUI::adminUI_Activated);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->fullGrid))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->cardGrid))->EndInit();
+			this->menuStrip1->ResumeLayout(false);
+			this->menuStrip1->PerformLayout();
+			this->ChangeData->ResumeLayout(false);
+			this->ChangeData->PerformLayout();
+			this->groupBox3->ResumeLayout(false);
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
-			this->groupBox3->ResumeLayout(false);
-			this->groupBox3->PerformLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->EndInit();
-			this->groupBox1->ResumeLayout(false);
-			this->groupBox1->PerformLayout();
+			this->addPassager->ResumeLayout(false);
+			this->addPassager->PerformLayout();
+			this->Sort->ResumeLayout(false);
+			this->Search->ResumeLayout(false);
+			this->Search->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->searchGrid))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -474,50 +785,54 @@ namespace Krsv {
 #pragma endregion
 
 	private: void Scan_List(LIST* L) {
-		dataGridView1->Rows->Clear();  // Очистка таблицы перед заполнением
+		fullGrid->Rows->Clear();
 
-		if (L == nullptr) return;  // Проверка на пустой список
+		if (L == nullptr) return;
 
 		LIST* q = L;
 		int i = 0;
 
 		while (q != nullptr) {
-			// Добавление новой строки
-			dataGridView1->Rows->Add();
-
-			// Заполнение ячеек данными
-			dataGridView1->Rows[i]->Cells[0]->Value = marshal_as<String^>(q->element.fam);  // Фамилия
-			dataGridView1->Rows[i]->Cells[1]->Value = marshal_as<String^>(q->element.im);   // Имя (исправлено Cells[1])
-			dataGridView1->Rows[i]->Cells[2]->Value = System::Convert::ToString(q->element.age);  // Возраст
-
-			q = q->next;  // Переход к следующему элементу
-			i++;          // Увеличение счетчика строк
+			fullGrid->Rows->Add();
+			fullGrid->Rows[i]->Cells[0]->Value = marshal_as<String^>(q->element.phoneNumber);
+			fullGrid->Rows[i]->Cells[1]->Value = marshal_as<String^>(q->element.fam);
+			fullGrid->Rows[i]->Cells[2]->Value = System::Convert::ToString(q->element.cardNumber);
+			fullGrid->Rows[i]->Cells[3]->Value = marshal_as<String^>(q->element.level);
+			fullGrid->Rows[i]->Cells[4]->Value = System::Convert::ToString(q->element.pointCount);
+			q = q->next;
+			i++;
 		}
 	}
 
-	private: void showst(student* a, int n)
+	private: void showst(passagers* a, int n)
 	{
-		dataGridView1->Rows->Clear();
+		fullGrid->Rows->Clear();
 		for (int i = 0; i < n; i++)
 		{
-			dataGridView1->Rows->Add();
-			dataGridView1->Rows[i]->Cells[0]->Value = marshal_as<String^>(a[i].fam);
-			dataGridView1->Rows[i]->Cells[1]->Value = marshal_as<String^>(a[i].im);
-			dataGridView1->Rows[i]->Cells[2]->Value = System::Convert::ToString(a[i].age);
+			fullGrid->Rows->Add();
+			fullGrid->Rows[i]->Cells[0]->Value = marshal_as<String^>(a[i].phoneNumber);
+			fullGrid->Rows[i]->Cells[1]->Value = marshal_as<String^>(a[i].fam);
+			fullGrid->Rows[i]->Cells[2]->Value = System::Convert::ToString(a[i].cardNumber);
+			fullGrid->Rows[i]->Cells[2]->Value = marshal_as<String^>(a[i].level);
+			fullGrid->Rows[i]->Cells[2]->Value = System::Convert::ToString(a[i].pointCount);
 		}
 	}
 	private: System::Void adminUI_Activated(System::Object^ sender, System::EventArgs^ e)
 	{
-		this->Column1->HeaderText = "Фамилия";
-		this->Column2->HeaderText = "Имя";
-		this->Column3->HeaderText = "Возраст";
-		this->Column4->HeaderText = "Фамилия";
-		this->Column5->HeaderText = "Имя";
-		this->Column6->HeaderText = "Возраст";
+		this->fullPhoneColumn->HeaderText = "Номер телефона";
+		this->fullFamColumn->HeaderText = "Фамилия И. О.";
+		this->fullCardColumn->HeaderText = "Номер карты";
+		this->fullLevelColumn->HeaderText = "Уровень";
+		this->fullPointColumn->HeaderText = "Количство баллов";
+		this->searchPhoneColumn->HeaderText = "Номер телефона";
+		this->searchFamColumn->HeaderText = "Фамилия И. О.";
+		this->searchCardColumn->HeaderText = "Номер карты";
+		this->searchLevelColumn->HeaderText = "Уровень";
+		this->searchPointColumn->HeaderText = "Количство баллов";
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		savest(L);
+		SaveListToFile(L);  // Сохранение списка в файл
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
 	{// Очистка существующего списка
@@ -528,7 +843,7 @@ namespace Krsv {
 		}
 
 		// Чтение данных из файла и создание нового списка
-		student v;
+		passagers v;
 		ifstream f("FileName.txt");
 
 		if (!f.is_open()) {
@@ -565,7 +880,7 @@ namespace Krsv {
 	}
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		dataGridView1->Rows->Clear();
+		fullGrid->Rows->Clear();
 	}
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e)
 	{
@@ -581,7 +896,7 @@ namespace Krsv {
 		}
 		else
 		{
-			student v;
+			passagers v;
 			int n = 0;
 			LIST* q;
 			q = L; //вставка после головы
@@ -599,19 +914,19 @@ namespace Krsv {
 	}
 	private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		if (textBox4->Text == "")
+		if (searchTxt->Text == "")
 		{
 			MessageBox::Show("Введите фамилию для поиска!", "Повторите ввод", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			return;
 		}
 		else
 		{
-			dataGridView2->Rows->Clear();
-			student v;
+			searchGrid->Rows->Clear();
+			passagers v;
 			LIST* q = L;
 			int i = 0;
 			marshal_context^ context = gcnew marshal_context(); //!!!!!
-			std::string poisk = context->marshal_as<std::string>(textBox4->Text);
+			std::string poisk = context->marshal_as<std::string>(searchTxt->Text);
 			bool find = false;
 			if (q != NULL)
 			{
@@ -619,10 +934,10 @@ namespace Krsv {
 				LIST* F = Find_List_Range(v, q);
 				while (F != NULL)
 				{
-					dataGridView2->Rows->Add();
-					dataGridView2->Rows[i]->Cells[0]->Value = marshal_as<String^>(F->element.fam);
-					dataGridView2->Rows[i]->Cells[1]->Value = marshal_as<String^>(F->element.im);
-					dataGridView2->Rows[i]->Cells[2]->Value = System::Convert::ToString(F->element.age);
+					searchGrid->Rows->Add();
+					searchGrid->Rows[i]->Cells[0]->Value = marshal_as<String^>(F->element.fam);
+					searchGrid->Rows[i]->Cells[1]->Value = marshal_as<String^>(F->element.im);
+					searchGrid->Rows[i]->Cells[2]->Value = System::Convert::ToString(F->element.age);
 					i++;
 					find = true;
 					F = F->next;
@@ -661,9 +976,9 @@ namespace Krsv {
 		Scan_List(L);
 	}
 
-	private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e) 
+	private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		student v;
+		passagers v;
 		marshal_context^ context = gcnew marshal_context();//!!!!!
 		if (textBox5->Text == "")
 		{
@@ -690,6 +1005,60 @@ namespace Krsv {
 				}
 			}
 			Scan_List(L);
+		}
+	}
+
+
+	private: System::Void searchButton_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+		if (searchTxt->Text == "")
+		{
+			MessageBox::Show("Введите данные для поиска!", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+		String^ searchValue = searchTxt->Text;
+		int searchIndex = searchBox->SelectedIndex;
+		if (searchIndex < 0)
+		{
+			MessageBox::Show("Выберите поле для поиска!", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+		searchGrid->Rows->Clear();
+		LIST* q = L;
+		int i = 0;
+		while (q != nullptr)
+		{
+			bool match = false;
+			switch (searchIndex)
+			{
+			case 0: // Телефон
+				match = (marshal_as<String^>(q->element.phoneNumber) == searchValue);
+				break;
+			case 1: // Фамилия И. О.
+				match = (marshal_as<String^>(q->element.fam) == searchValue);
+				break;
+			case 2: // Номер бонусной карты
+				match = (System::Convert::ToString(q->element.cardNumber) == searchValue);
+				break;
+			case 3: // Уровень лояльности
+				match = (marshal_as<String^>(q->element.level) == searchValue);
+				break;
+			}
+			if (match)
+			{
+				searchGrid->Rows->Add();
+				searchGrid->Rows[i]->Cells[0]->Value = marshal_as<String^>(q->element.phoneNumber);
+				searchGrid->Rows[i]->Cells[1]->Value = marshal_as<String^>(q->element.fam);
+				searchGrid->Rows[i]->Cells[2]->Value = System::Convert::ToString(q->element.cardNumber);
+				searchGrid->Rows[i]->Cells[3]->Value = marshal_as<String^>(q->element.level);
+				searchGrid->Rows[i]->Cells[4]->Value = System::Convert::ToString(q->element.pointCount);
+				i++;
+			}
+			q = q->next;
+		}
+		if (i == 0)
+		{
+			MessageBox::Show("Ничего не найдено!", "Поиск", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		}
 	}
 };

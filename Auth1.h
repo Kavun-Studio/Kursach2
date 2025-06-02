@@ -88,6 +88,8 @@ namespace Krsv {
 			// 
 			// button1
 			// 
+			this->button1->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 16, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
 			this->button1->Location = System::Drawing::Point(40, 327);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(300, 100);
@@ -99,22 +101,22 @@ namespace Krsv {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label1->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 16, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label1->Location = System::Drawing::Point(139, 26);
+			this->label1->Location = System::Drawing::Point(136, 20);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(98, 37);
+			this->label1->Size = System::Drawing::Size(119, 43);
 			this->label1->TabIndex = 5;
 			this->label1->Text = L"Логин";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label2->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 16, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label2->Location = System::Drawing::Point(128, 138);
+			this->label2->Location = System::Drawing::Point(125, 132);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(124, 37);
+			this->label2->Size = System::Drawing::Size(139, 43);
 			this->label2->TabIndex = 6;
 			this->label2->Text = L"Пароль";
 			// 

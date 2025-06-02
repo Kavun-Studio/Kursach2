@@ -1,8 +1,8 @@
 #pragma once
-#include <string>
-#include <msclr/marshal_cppstd.h>
-#include <fstream>
 #include "fun.h"
+#include <fstream>
+#include <msclr/marshal_cppstd.h>
+#include <string>
 
 namespace Krsv {
 
@@ -53,10 +53,7 @@ namespace Krsv {
 	private: System::Windows::Forms::ToolStripMenuItem^ файлToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ openToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ saveToolStripMenuItem;
-
-
 	private: System::Windows::Forms::ToolStripMenuItem^ clearToolStripMenuItem;
-
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
@@ -86,21 +83,12 @@ namespace Krsv {
 	private: System::Windows::Forms::TextBox^ addFamTxt;
 	private: System::Windows::Forms::TextBox^ addNumberTxt;
 	private: LIST* L = nullptr;
-
-
-
-
 	private: System::Windows::Forms::ComboBox^ sortBox;
 	private: System::Windows::Forms::Button^ sortVozrButton;
 	private: System::Windows::Forms::Button^ sortUbvButton;
 	private: System::Windows::Forms::GroupBox^ Sort;
 	private: System::Windows::Forms::GroupBox^ Search;
 	private: System::Windows::Forms::DataGridView^ searchGrid;
-
-
-
-
-
 	private: System::Windows::Forms::Button^ searchButton;
 	private: System::Windows::Forms::TextBox^ searchTxt;
 	private: System::Windows::Forms::ComboBox^ searchBox;
@@ -197,18 +185,20 @@ namespace Krsv {
 			// 
 			// fullGrid
 			// 
+			this->fullGrid->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::AllCells;
+			this->fullGrid->BackgroundColor = System::Drawing::SystemColors::ActiveCaption;
 			this->fullGrid->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->fullGrid->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
 				this->fullPhoneColumn,
 					this->fullFamColumn, this->fullCardColumn, this->fullLevelColumn, this->fullPointColumn
 			});
 			this->fullGrid->GridColor = System::Drawing::SystemColors::ActiveCaption;
-			this->fullGrid->Location = System::Drawing::Point(12, 36);
+			this->fullGrid->Location = System::Drawing::Point(9, 42);
 			this->fullGrid->Name = L"fullGrid";
 			this->fullGrid->ReadOnly = true;
 			this->fullGrid->RowHeadersWidth = 62;
 			this->fullGrid->RowTemplate->Height = 28;
-			this->fullGrid->Size = System::Drawing::Size(849, 386);
+			this->fullGrid->Size = System::Drawing::Size(849, 395);
 			this->fullGrid->TabIndex = 0;
 			// 
 			// fullPhoneColumn
@@ -217,7 +207,7 @@ namespace Krsv {
 			this->fullPhoneColumn->MinimumWidth = 8;
 			this->fullPhoneColumn->Name = L"fullPhoneColumn";
 			this->fullPhoneColumn->ReadOnly = true;
-			this->fullPhoneColumn->Width = 150;
+			this->fullPhoneColumn->Width = 115;
 			// 
 			// fullFamColumn
 			// 
@@ -225,7 +215,7 @@ namespace Krsv {
 			this->fullFamColumn->MinimumWidth = 8;
 			this->fullFamColumn->Name = L"fullFamColumn";
 			this->fullFamColumn->ReadOnly = true;
-			this->fullFamColumn->Width = 150;
+			this->fullFamColumn->Width = 126;
 			// 
 			// fullCardColumn
 			// 
@@ -233,7 +223,7 @@ namespace Krsv {
 			this->fullCardColumn->MinimumWidth = 8;
 			this->fullCardColumn->Name = L"fullCardColumn";
 			this->fullCardColumn->ReadOnly = true;
-			this->fullCardColumn->Width = 150;
+			this->fullCardColumn->Width = 158;
 			// 
 			// fullLevelColumn
 			// 
@@ -241,7 +231,7 @@ namespace Krsv {
 			this->fullLevelColumn->MinimumWidth = 8;
 			this->fullLevelColumn->Name = L"fullLevelColumn";
 			this->fullLevelColumn->ReadOnly = true;
-			this->fullLevelColumn->Width = 150;
+			this->fullLevelColumn->Width = 187;
 			// 
 			// fullPointColumn
 			// 
@@ -249,16 +239,18 @@ namespace Krsv {
 			this->fullPointColumn->MinimumWidth = 8;
 			this->fullPointColumn->Name = L"fullPointColumn";
 			this->fullPointColumn->ReadOnly = true;
-			this->fullPointColumn->Width = 150;
+			this->fullPointColumn->Width = 144;
 			// 
 			// cardGrid
 			// 
+			this->cardGrid->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::AllCells;
+			this->cardGrid->BackgroundColor = System::Drawing::SystemColors::ActiveCaption;
 			this->cardGrid->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->cardGrid->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
 				this->Column4, this->Column5,
 					this->Column6, this->Column9
 			});
-			this->cardGrid->Location = System::Drawing::Point(517, 61);
+			this->cardGrid->Location = System::Drawing::Point(513, 104);
 			this->cardGrid->Name = L"cardGrid";
 			this->cardGrid->RowHeadersWidth = 62;
 			this->cardGrid->RowTemplate->Height = 28;
@@ -270,28 +262,28 @@ namespace Krsv {
 			this->Column4->HeaderText = L"Дата";
 			this->Column4->MinimumWidth = 8;
 			this->Column4->Name = L"Column4";
-			this->Column4->Width = 150;
+			this->Column4->Width = 96;
 			// 
 			// Column5
 			// 
 			this->Column5->HeaderText = L"Время";
 			this->Column5->MinimumWidth = 8;
 			this->Column5->Name = L"Column5";
-			this->Column5->Width = 150;
+			this->Column5->Width = 108;
 			// 
 			// Column6
 			// 
 			this->Column6->HeaderText = L"Тип";
 			this->Column6->MinimumWidth = 8;
 			this->Column6->Name = L"Column6";
-			this->Column6->Width = 150;
+			this->Column6->Width = 84;
 			// 
 			// Column9
 			// 
 			this->Column9->HeaderText = L"Количество";
 			this->Column9->MinimumWidth = 8;
 			this->Column9->Name = L"Column9";
-			this->Column9->Width = 150;
+			this->Column9->Width = 168;
 			// 
 			// menuStrip1
 			// 
@@ -300,7 +292,7 @@ namespace Krsv {
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->файлToolStripMenuItem });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(1462, 36);
+			this->menuStrip1->Size = System::Drawing::Size(1441, 33);
 			this->menuStrip1->TabIndex = 25;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -319,14 +311,14 @@ namespace Krsv {
 			this->openToolStripMenuItem->Name = L"openToolStripMenuItem";
 			this->openToolStripMenuItem->Size = System::Drawing::Size(270, 34);
 			this->openToolStripMenuItem->Text = L"Открыть";
-			this->openToolStripMenuItem->Click += gcnew System::EventHandler(this, &adminUI::открытьToolStripMenuItem_Click);
+			this->openToolStripMenuItem->Click += gcnew System::EventHandler(this, &adminUI::openToolStripMenuItem_Click);
 			// 
 			// saveToolStripMenuItem
 			// 
 			this->saveToolStripMenuItem->Name = L"saveToolStripMenuItem";
 			this->saveToolStripMenuItem->Size = System::Drawing::Size(270, 34);
 			this->saveToolStripMenuItem->Text = L"Сохранить";
-			this->saveToolStripMenuItem->Click += gcnew System::EventHandler(this, &adminUI::сохранитьToolStripMenuItem_Click);
+			this->saveToolStripMenuItem->Click += gcnew System::EventHandler(this, &adminUI::saveToolStripMenuItem_Click);
 			// 
 			// clearToolStripMenuItem
 			// 
@@ -338,36 +330,39 @@ namespace Krsv {
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label5->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label5->Location = System::Drawing::Point(1300, 22);
+			this->label5->Location = System::Drawing::Point(1292, 30);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(23, 25);
+			this->label5->Size = System::Drawing::Size(28, 31);
 			this->label5->TabIndex = 26;
 			this->label5->Text = L"0";
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label4->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label4->Location = System::Drawing::Point(1009, 22);
+			this->label4->Location = System::Drawing::Point(860, 30);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(285, 25);
+			this->label4->Size = System::Drawing::Size(392, 31);
 			this->label4->TabIndex = 25;
 			this->label4->Text = L"Количество баллов на карте:";
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(320, 22);
+			this->button1->AutoSize = true;
+			this->button1->Location = System::Drawing::Point(337, 42);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(191, 38);
 			this->button1->TabIndex = 17;
-			this->button1->Text = L"Просмотр";
+			this->button1->Text = L"Применить";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &adminUI::button1_Click);
 			// 
 			// addPointButton
 			// 
+			this->addPointButton->AutoSize = true;
 			this->addPointButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->addPointButton->Location = System::Drawing::Point(300, 79);
@@ -376,6 +371,7 @@ namespace Krsv {
 			this->addPointButton->TabIndex = 28;
 			this->addPointButton->Text = L"Начислить";
 			this->addPointButton->UseVisualStyleBackColor = true;
+			this->addPointButton->Click += gcnew System::EventHandler(this, &adminUI::addPointButton_Click);
 			// 
 			// changePointTxt
 			// 
@@ -401,14 +397,14 @@ namespace Krsv {
 			// 
 			this->cardNumTxt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->cardNumTxt->Location = System::Drawing::Point(6, 25);
+			this->cardNumTxt->Location = System::Drawing::Point(12, 44);
 			this->cardNumTxt->Name = L"cardNumTxt";
 			this->cardNumTxt->Size = System::Drawing::Size(297, 30);
 			this->cardNumTxt->TabIndex = 31;
-			this->cardNumTxt->Text = L"Номер карты";
 			// 
 			// ChangeData
 			// 
+			this->ChangeData->AutoSize = true;
 			this->ChangeData->Controls->Add(this->label5);
 			this->ChangeData->Controls->Add(this->groupBox3);
 			this->ChangeData->Controls->Add(this->label4);
@@ -416,9 +412,11 @@ namespace Krsv {
 			this->ChangeData->Controls->Add(this->cardNumTxt);
 			this->ChangeData->Controls->Add(this->button1);
 			this->ChangeData->Controls->Add(this->cardGrid);
-			this->ChangeData->Location = System::Drawing::Point(12, 634);
+			this->ChangeData->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->ChangeData->Location = System::Drawing::Point(9, 667);
 			this->ChangeData->Name = L"ChangeData";
-			this->ChangeData->Size = System::Drawing::Size(1425, 325);
+			this->ChangeData->Size = System::Drawing::Size(1425, 423);
 			this->ChangeData->TabIndex = 32;
 			this->ChangeData->TabStop = false;
 			this->ChangeData->Text = L"Управление пользователем";
@@ -427,7 +425,9 @@ namespace Krsv {
 			// 
 			this->groupBox3->Controls->Add(this->changeLevelButton);
 			this->groupBox3->Controls->Add(this->comboBox2);
-			this->groupBox3->Location = System::Drawing::Point(6, 194);
+			this->groupBox3->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->groupBox3->Location = System::Drawing::Point(12, 235);
 			this->groupBox3->Name = L"groupBox3";
 			this->groupBox3->Size = System::Drawing::Size(450, 127);
 			this->groupBox3->TabIndex = 33;
@@ -436,6 +436,7 @@ namespace Krsv {
 			// 
 			// changeLevelButton
 			// 
+			this->changeLevelButton->AutoSize = true;
 			this->changeLevelButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->changeLevelButton->Location = System::Drawing::Point(300, 79);
@@ -444,6 +445,7 @@ namespace Krsv {
 			this->changeLevelButton->TabIndex = 28;
 			this->changeLevelButton->Text = L"Изменить";
 			this->changeLevelButton->UseVisualStyleBackColor = true;
+			this->changeLevelButton->Click += gcnew System::EventHandler(this, &adminUI::changeLevelButton_Click);
 			// 
 			// comboBox2
 			// 
@@ -461,7 +463,9 @@ namespace Krsv {
 			this->groupBox2->Controls->Add(this->addPointButton);
 			this->groupBox2->Controls->Add(this->changePointBox);
 			this->groupBox2->Controls->Add(this->changePointTxt);
-			this->groupBox2->Location = System::Drawing::Point(6, 61);
+			this->groupBox2->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->groupBox2->Location = System::Drawing::Point(12, 102);
 			this->groupBox2->Name = L"groupBox2";
 			this->groupBox2->Size = System::Drawing::Size(450, 127);
 			this->groupBox2->TabIndex = 32;
@@ -470,6 +474,7 @@ namespace Krsv {
 			// 
 			// addPassager
 			// 
+			this->addPassager->AutoSize = true;
 			this->addPassager->Controls->Add(this->addLevelBox);
 			this->addPassager->Controls->Add(this->addButton);
 			this->addPassager->Controls->Add(this->label7);
@@ -481,31 +486,32 @@ namespace Krsv {
 			this->addPassager->Controls->Add(this->addCardTxt);
 			this->addPassager->Controls->Add(this->addFamTxt);
 			this->addPassager->Controls->Add(this->addNumberTxt);
-			this->addPassager->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->addPassager->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->addPassager->Location = System::Drawing::Point(881, 36);
+			this->addPassager->Location = System::Drawing::Point(878, 42);
 			this->addPassager->Name = L"addPassager";
-			this->addPassager->Size = System::Drawing::Size(425, 386);
+			this->addPassager->Size = System::Drawing::Size(556, 395);
 			this->addPassager->TabIndex = 33;
 			this->addPassager->TabStop = false;
 			this->addPassager->Text = L"Добавить пользователя";
 			// 
 			// addLevelBox
 			// 
-			this->addLevelBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->addLevelBox->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->addLevelBox->FormattingEnabled = true;
 			this->addLevelBox->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"Bronze", L"Silver", L"Gold", L"Brilliand" });
-			this->addLevelBox->Location = System::Drawing::Point(196, 191);
+			this->addLevelBox->Location = System::Drawing::Point(320, 200);
 			this->addLevelBox->Name = L"addLevelBox";
-			this->addLevelBox->Size = System::Drawing::Size(220, 33);
+			this->addLevelBox->Size = System::Drawing::Size(220, 34);
 			this->addLevelBox->TabIndex = 31;
 			// 
 			// addButton
 			// 
-			this->addButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->addButton->AutoSize = true;
+			this->addButton->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->addButton->Location = System::Drawing::Point(196, 307);
+			this->addButton->Location = System::Drawing::Point(163, 321);
 			this->addButton->Name = L"addButton";
 			this->addButton->Size = System::Drawing::Size(220, 41);
 			this->addButton->TabIndex = 29;
@@ -516,93 +522,93 @@ namespace Krsv {
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label7->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label7->Location = System::Drawing::Point(16, 230);
+			this->label7->Location = System::Drawing::Point(26, 239);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(174, 22);
+			this->label7->Size = System::Drawing::Size(252, 31);
 			this->label7->TabIndex = 9;
 			this->label7->Text = L"Количество баллов";
 			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label6->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label6->Location = System::Drawing::Point(8, 191);
+			this->label6->Location = System::Drawing::Point(12, 199);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(182, 22);
+			this->label6->Size = System::Drawing::Size(266, 31);
 			this->label6->TabIndex = 8;
 			this->label6->Text = L"Уровень лояльности";
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label3->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label3->Location = System::Drawing::Point(69, 155);
+			this->label3->Location = System::Drawing::Point(110, 159);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(121, 22);
+			this->label3->Size = System::Drawing::Size(168, 31);
 			this->label3->TabIndex = 7;
 			this->label3->Text = L"Номер карты";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label2->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label2->Location = System::Drawing::Point(102, 119);
+			this->label2->Location = System::Drawing::Point(166, 119);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(88, 22);
+			this->label2->Size = System::Drawing::Size(112, 31);
 			this->label2->TabIndex = 6;
 			this->label2->Text = L"Фамилия";
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->label1->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label1->Location = System::Drawing::Point(37, 83);
+			this->label1->Location = System::Drawing::Point(68, 79);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(153, 22);
+			this->label1->Size = System::Drawing::Size(210, 31);
 			this->label1->TabIndex = 5;
 			this->label1->Text = L"Номер телефона";
 			// 
 			// addCountTxt
 			// 
-			this->addCountTxt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->addCountTxt->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->addCountTxt->Location = System::Drawing::Point(196, 230);
+			this->addCountTxt->Location = System::Drawing::Point(320, 240);
 			this->addCountTxt->Name = L"addCountTxt";
-			this->addCountTxt->Size = System::Drawing::Size(220, 30);
+			this->addCountTxt->Size = System::Drawing::Size(220, 34);
 			this->addCountTxt->TabIndex = 4;
 			// 
 			// addCardTxt
 			// 
-			this->addCardTxt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->addCardTxt->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->addCardTxt->Location = System::Drawing::Point(196, 155);
+			this->addCardTxt->Location = System::Drawing::Point(320, 160);
 			this->addCardTxt->Name = L"addCardTxt";
-			this->addCardTxt->Size = System::Drawing::Size(220, 30);
+			this->addCardTxt->Size = System::Drawing::Size(220, 34);
 			this->addCardTxt->TabIndex = 2;
 			// 
 			// addFamTxt
 			// 
-			this->addFamTxt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->addFamTxt->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->addFamTxt->Location = System::Drawing::Point(196, 119);
+			this->addFamTxt->Location = System::Drawing::Point(320, 120);
 			this->addFamTxt->Name = L"addFamTxt";
-			this->addFamTxt->Size = System::Drawing::Size(220, 30);
+			this->addFamTxt->Size = System::Drawing::Size(220, 34);
 			this->addFamTxt->TabIndex = 1;
 			// 
 			// addNumberTxt
 			// 
-			this->addNumberTxt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->addNumberTxt->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->addNumberTxt->ForeColor = System::Drawing::SystemColors::WindowFrame;
-			this->addNumberTxt->Location = System::Drawing::Point(196, 83);
+			this->addNumberTxt->ForeColor = System::Drawing::SystemColors::MenuText;
+			this->addNumberTxt->Location = System::Drawing::Point(320, 80);
 			this->addNumberTxt->Name = L"addNumberTxt";
-			this->addNumberTxt->Size = System::Drawing::Size(220, 30);
+			this->addNumberTxt->Size = System::Drawing::Size(220, 34);
 			this->addNumberTxt->TabIndex = 0;
 			// 
 			// sortBox
@@ -618,6 +624,7 @@ namespace Krsv {
 			// 
 			// sortVozrButton
 			// 
+			this->sortVozrButton->AutoSize = true;
 			this->sortVozrButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->sortVozrButton->Location = System::Drawing::Point(6, 106);
@@ -630,6 +637,7 @@ namespace Krsv {
 			// 
 			// sortUbvButton
 			// 
+			this->sortUbvButton->AutoSize = true;
 			this->sortUbvButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->sortUbvButton->Location = System::Drawing::Point(5, 145);
@@ -642,31 +650,39 @@ namespace Krsv {
 			// 
 			// Sort
 			// 
+			this->Sort->AutoSize = true;
 			this->Sort->Controls->Add(this->sortVozrButton);
 			this->Sort->Controls->Add(this->sortUbvButton);
 			this->Sort->Controls->Add(this->sortBox);
-			this->Sort->Location = System::Drawing::Point(12, 428);
+			this->Sort->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->Sort->Location = System::Drawing::Point(9, 443);
 			this->Sort->Name = L"Sort";
-			this->Sort->Size = System::Drawing::Size(258, 200);
+			this->Sort->Size = System::Drawing::Size(259, 227);
 			this->Sort->TabIndex = 37;
 			this->Sort->TabStop = false;
 			this->Sort->Text = L"Сортировка";
 			// 
 			// Search
 			// 
+			this->Search->AutoSize = true;
 			this->Search->Controls->Add(this->searchGrid);
 			this->Search->Controls->Add(this->searchButton);
 			this->Search->Controls->Add(this->searchTxt);
 			this->Search->Controls->Add(this->searchBox);
-			this->Search->Location = System::Drawing::Point(276, 428);
+			this->Search->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->Search->Location = System::Drawing::Point(274, 443);
 			this->Search->Name = L"Search";
-			this->Search->Size = System::Drawing::Size(1161, 200);
+			this->Search->Size = System::Drawing::Size(1161, 227);
 			this->Search->TabIndex = 39;
 			this->Search->TabStop = false;
 			this->Search->Text = L"Поиск";
 			// 
 			// searchGrid
 			// 
+			this->searchGrid->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::AllCells;
+			this->searchGrid->BackgroundColor = System::Drawing::SystemColors::ActiveCaption;
 			this->searchGrid->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->searchGrid->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
 				this->searchPhoneColumn,
@@ -687,7 +703,7 @@ namespace Krsv {
 			this->searchPhoneColumn->MinimumWidth = 8;
 			this->searchPhoneColumn->Name = L"searchPhoneColumn";
 			this->searchPhoneColumn->ReadOnly = true;
-			this->searchPhoneColumn->Width = 150;
+			this->searchPhoneColumn->Width = 132;
 			// 
 			// searchFamColumn
 			// 
@@ -695,7 +711,7 @@ namespace Krsv {
 			this->searchFamColumn->MinimumWidth = 8;
 			this->searchFamColumn->Name = L"searchFamColumn";
 			this->searchFamColumn->ReadOnly = true;
-			this->searchFamColumn->Width = 150;
+			this->searchFamColumn->Width = 133;
 			// 
 			// searchCardColumn
 			// 
@@ -703,7 +719,7 @@ namespace Krsv {
 			this->searchCardColumn->MinimumWidth = 8;
 			this->searchCardColumn->Name = L"searchCardColumn";
 			this->searchCardColumn->ReadOnly = true;
-			this->searchCardColumn->Width = 150;
+			this->searchCardColumn->Width = 144;
 			// 
 			// searchLevelColumn
 			// 
@@ -711,7 +727,7 @@ namespace Krsv {
 			this->searchLevelColumn->MinimumWidth = 8;
 			this->searchLevelColumn->Name = L"searchLevelColumn";
 			this->searchLevelColumn->ReadOnly = true;
-			this->searchLevelColumn->Width = 150;
+			this->searchLevelColumn->Width = 241;
 			// 
 			// searchPointColumn
 			// 
@@ -719,10 +735,11 @@ namespace Krsv {
 			this->searchPointColumn->MinimumWidth = 8;
 			this->searchPointColumn->Name = L"searchPointColumn";
 			this->searchPointColumn->ReadOnly = true;
-			this->searchPointColumn->Width = 150;
+			this->searchPointColumn->Width = 122;
 			// 
 			// searchButton
 			// 
+			this->searchButton->AutoSize = true;
 			this->searchButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->searchButton->Location = System::Drawing::Point(6, 145);
@@ -760,8 +777,9 @@ namespace Krsv {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->AutoSize = true;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->ClientSize = System::Drawing::Size(1462, 1022);
+			this->ClientSize = System::Drawing::Size(1441, 1102);
 			this->Controls->Add(this->Search);
 			this->Controls->Add(this->Sort);
 			this->Controls->Add(this->addPassager);
@@ -780,11 +798,13 @@ namespace Krsv {
 			this->ChangeData->ResumeLayout(false);
 			this->ChangeData->PerformLayout();
 			this->groupBox3->ResumeLayout(false);
+			this->groupBox3->PerformLayout();
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
 			this->addPassager->ResumeLayout(false);
 			this->addPassager->PerformLayout();
 			this->Sort->ResumeLayout(false);
+			this->Sort->PerformLayout();
 			this->Search->ResumeLayout(false);
 			this->Search->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->searchGrid))->EndInit();
@@ -817,14 +837,13 @@ namespace Krsv {
 	private: void showst(passagers* a, int n)
 	{
 		fullGrid->Rows->Clear();
-		for (int i = 0; i < n; i++)
-		{
+		for (int i = 0; i < n; i++) {
 			fullGrid->Rows->Add();
 			fullGrid->Rows[i]->Cells[0]->Value = marshal_as<String^>(a[i].phoneNumber);
 			fullGrid->Rows[i]->Cells[1]->Value = marshal_as<String^>(a[i].fam);
 			fullGrid->Rows[i]->Cells[2]->Value = System::Convert::ToString(a[i].cardNumber);
-			fullGrid->Rows[i]->Cells[2]->Value = marshal_as<String^>(a[i].level);
-			fullGrid->Rows[i]->Cells[2]->Value = System::Convert::ToString(a[i].pointCount);
+			fullGrid->Rows[i]->Cells[3]->Value = marshal_as<String^>(a[i].level);
+			fullGrid->Rows[i]->Cells[4]->Value = System::Convert::ToString(a[i].pointCount);
 		}
 	}
 	private: System::Void adminUI_Activated(System::Object^ sender, System::EventArgs^ e)
@@ -833,172 +852,433 @@ namespace Krsv {
 		this->fullFamColumn->HeaderText = "Фамилия И. О.";
 		this->fullCardColumn->HeaderText = "Номер карты";
 		this->fullLevelColumn->HeaderText = "Уровень";
-		this->fullPointColumn->HeaderText = "Количство баллов";
+		this->fullPointColumn->HeaderText = "Количество баллов";
 		this->searchPhoneColumn->HeaderText = "Номер телефона";
 		this->searchFamColumn->HeaderText = "Фамилия И. О.";
 		this->searchCardColumn->HeaderText = "Номер карты";
 		this->searchLevelColumn->HeaderText = "Уровень";
-		this->searchPointColumn->HeaderText = "Количство баллов";
+		this->searchPointColumn->HeaderText = "Количество баллов";
 	}
 	private: System::Void searchButton_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		if (searchTxt->Text == "")
-		{
+		if (String::IsNullOrEmpty(searchTxt->Text)) {
 			MessageBox::Show("Введите данные для поиска!", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			return;
 		}
-		String^ searchValue = searchTxt->Text;
+
+		String^ searchValue = searchTxt->Text->Trim();
 		int searchIndex = searchBox->SelectedIndex;
-		if (searchIndex < 0)
-		{
+
+		if (searchIndex < 0) {
 			MessageBox::Show("Выберите поле для поиска!", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			return;
 		}
+
+		if (L == nullptr) {
+			MessageBox::Show("Список пуст!", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+
 		searchGrid->Rows->Clear();
 		LIST* q = L;
-		int i = 0;
-		while (q != nullptr)
-		{
+		int foundCount = 0;
+
+		while (q != nullptr) {
 			bool match = false;
-			switch (searchIndex)
-			{
+
+			switch (searchIndex) {
 			case 0: // Телефон
-				match = (marshal_as<String^>(q->element.phoneNumber) == searchValue);
+				match = String::Equals(marshal_as<String^>(q->element.phoneNumber), searchValue, StringComparison::OrdinalIgnoreCase);
 				break;
 			case 1: // Фамилия И. О.
-				match = (marshal_as<String^>(q->element.fam) == searchValue);
+				match = String::Equals(marshal_as<String^>(q->element.fam), searchValue, StringComparison::OrdinalIgnoreCase);
 				break;
 			case 2: // Номер бонусной карты
-				match = (System::Convert::ToString(q->element.cardNumber) == searchValue);
+				match = String::Equals(System::Convert::ToString(q->element.cardNumber), searchValue);
 				break;
 			case 3: // Уровень лояльности
-				match = (marshal_as<String^>(q->element.level) == searchValue);
+				match = String::Equals(marshal_as<String^>(q->element.level), searchValue, StringComparison::OrdinalIgnoreCase);
 				break;
 			}
-			if (match)
-			{
+
+			if (match) {
 				searchGrid->Rows->Add();
-				searchGrid->Rows[i]->Cells[0]->Value = marshal_as<String^>(q->element.phoneNumber);
-				searchGrid->Rows[i]->Cells[1]->Value = marshal_as<String^>(q->element.fam);
-				searchGrid->Rows[i]->Cells[2]->Value = System::Convert::ToString(q->element.cardNumber);
-				searchGrid->Rows[i]->Cells[3]->Value = marshal_as<String^>(q->element.level);
-				searchGrid->Rows[i]->Cells[4]->Value = System::Convert::ToString(q->element.pointCount);
-				i++;
+				searchGrid->Rows[foundCount]->Cells[0]->Value = marshal_as<String^>(q->element.phoneNumber);
+				searchGrid->Rows[foundCount]->Cells[1]->Value = marshal_as<String^>(q->element.fam);
+				searchGrid->Rows[foundCount]->Cells[2]->Value = System::Convert::ToString(q->element.cardNumber);
+				searchGrid->Rows[foundCount]->Cells[3]->Value = marshal_as<String^>(q->element.level);
+				searchGrid->Rows[foundCount]->Cells[4]->Value = System::Convert::ToString(q->element.pointCount);
+				foundCount++;
 			}
 			q = q->next;
 		}
-		if (i == 0)
-		{
+
+		if (foundCount == 0) {
 			MessageBox::Show("Ничего не найдено!", "Поиск", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		}
 	}
+
 	private: System::Void clearToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 	{
+		if (L != nullptr) {
+			while (L != nullptr) {
+				L = DelFirst_List(L);
+			}
+		}
 		fullGrid->Rows->Clear();
+		searchGrid->Rows->Clear();
+		cardGrid->Rows->Clear();
+
+		label5->Text = "0";
+
+		MessageBox::Show("Данные очищены!", "Информация", MessageBoxButtons::OK, MessageBoxIcon::Information);
 	}
 	private: System::Void addButton_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		if (addNumberTxt->Text == "" || addCardTxt->Text == "" || addFamTxt->Text == "" || addLevelBox->Text == "" || addCountTxt->Text == "")
-		{
-			MessageBox::Show("Не все поля заполены", "Повторите ввод", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		if (String::IsNullOrWhiteSpace(addNumberTxt->Text) ||
+			String::IsNullOrWhiteSpace(addCardTxt->Text) ||
+			String::IsNullOrWhiteSpace(addFamTxt->Text) ||
+			String::IsNullOrWhiteSpace(addLevelBox->Text) ||
+			String::IsNullOrWhiteSpace(addCountTxt->Text)) {
+			MessageBox::Show("Не все поля заполнены!", "Повторите ввод", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			return;
 		}
-		else
-		{
+
+		try {
 			passagers v;
-			int n = 0;
-			LIST* q;
-			q = L; //вставка после головы
-			marshal_context^ context = gcnew marshal_context();//!!!!!
-			v.phoneNumber = context->marshal_as<std::string>(addNumberTxt->Text->ToString());
-			v.fam = context->marshal_as<std::string>(addFamTxt->Text->ToString());
-			v.cardNumber = Convert::ToInt32(addCardTxt->Text);
-			v.level = context->marshal_as<std::string>(addLevelBox->Text->ToString());
-			v.pointCount = Convert::ToInt32(addCountTxt->Text);
-			q = Ins_AfterList(v, L, q);
+			marshal_context^ context = gcnew marshal_context();
+
+			v.phoneNumber = context->marshal_as<std::string>(addNumberTxt->Text->Trim());
+			v.fam = context->marshal_as<std::string>(addFamTxt->Text->Trim());
+			v.cardNumber = Convert::ToInt32(addCardTxt->Text->Trim());
+			v.level = context->marshal_as<std::string>(addLevelBox->Text->Trim());
+			v.pointCount = Convert::ToInt32(addCountTxt->Text->Trim());
+			if (v.cardNumber <= 0 || v.pointCount < 0) {
+				MessageBox::Show("Номер карты должен быть положительным, количество баллов не может быть отрицательным!",
+					"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				delete context;
+				return;
+			}
+
+			if (L == nullptr) {
+				L = Init_List(v);
+			}
+			else {
+				LIST* q = L;
+				while (q->next != nullptr) {
+					q = q->next;
+				}
+				Ins_AfterList(v, L, q);
+			}
 
 			Scan_List(L);
-			addNumberTxt->Text = "";
-			addFamTxt->Text = "";
-			addCardTxt->Text = "";
-			addLevelBox->Text = "";
-			addCountTxt->Text = "";
+
+			addNumberTxt->Clear();
+			addFamTxt->Clear();
+			addCardTxt->Clear();
+			addLevelBox->SelectedIndex = -1;
+			addCountTxt->Clear();
+
+			delete context;
+			MessageBox::Show("Пассажир успешно добавлен!", "Успех", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Ошибка при добавлении: " + ex->Message, "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}
 	private: System::Void sortVozrButton_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		if (sortBox->SelectedIndex < -1)
-		{
+		if (sortBox->SelectedIndex < 0) {
 			MessageBox::Show("Выберите поле для сортировки!", "Сортировка", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			return;
 		}
-		if (sortBox->SelectedIndex == 0) SortBySurnameAscending(L);
-		if (sortBox->SelectedIndex == 1) SortByPointsAscending(L);
-		Scan_List(L);
+
+		if (L == nullptr) {
+			MessageBox::Show("Список пуст!", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+
+		try {
+			if (sortBox->SelectedIndex == 0) {
+				SortBySurnameAscending(L);
+			}
+			else if (sortBox->SelectedIndex == 1) {
+				SortByPointsAscending(L);
+			}
+
+			Scan_List(L);
+			MessageBox::Show("Сортировка по возрастанию выполнена!", "Успех", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Ошибка при сортировке: " + ex->Message, "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
 	}
 	private: System::Void sortUbvButton_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		if (sortBox->SelectedIndex < -1)
-		{
+		if (sortBox->SelectedIndex < 0) {
 			MessageBox::Show("Выберите поле для сортировки!", "Сортировка", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			return;
 		}
-		if (sortBox->SelectedIndex == 0) SortBySurnameDescending(L);
-		if (sortBox->SelectedIndex == 1) SortByPointsDescending(L);
-		Scan_List(L);
-	}
-	private: System::Void открытьToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
-	{
-		if (L != nullptr) {
-			while (L != nullptr) {
-				L = DelFirst_List(L);  // Удаляем элементы с начала списка
-			}
-		}
 
-		// Чтение данных из файла и создание нового списка
-		passagers v;
-		ifstream f("FileName.txt");
-
-		if (!f.is_open())
-		{
-			// Обработка ошибки открытия файла
-			MessageBox::Show("Ошибка при открытии файла", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		if (L == nullptr) {
+			MessageBox::Show("Список пуст!", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			return;
 		}
 
-		// Чтение первой записи
-		string phoneNumber, fam, level;
-		int cardNumber, pointCount;
-		if (f >> phoneNumber >> fam >> cardNumber >> level >> pointCount) {
-			v.phoneNumber = phoneNumber;
-			v.fam = fam;
-			v.cardNumber = cardNumber;
-			v.level = level;
-			v.pointCount = pointCount;
-			L = Init_List(v);  // Создаем первый элемент списка
-			LIST* q = L;       // Указатель на последний элемент
+		try {
+			if (sortBox->SelectedIndex == 0) {
+				SortBySurnameDescending(L);
+			}
+			else if (sortBox->SelectedIndex == 1) {
+				SortByPointsDescending(L);
+			}
 
-			// Чтение остальных записей
-			while (f >> phoneNumber >> fam >> cardNumber >> level >> pointCount) {
-				v.phoneNumber = phoneNumber;
-				v.fam = fam;
-				v.cardNumber = cardNumber;
-				v.level = level;
-				v.pointCount = pointCount;
-				q = Ins_AfterList(v, L, q);  // Добавляем элементы в конец списка
+			Scan_List(L);
+			MessageBox::Show("Сортировка по убыванию выполнена!", "Успех", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Ошибка при сортировке: " + ex->Message, "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+	}
+	private: System::Void openToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		try {
+			// Очищаем существующий список
+			if (L != nullptr) {
+				while (L != nullptr) {
+					L = DelFirst_List(L);
+				}
+			}
+
+			// Открываем файл для чтения
+			std::ifstream f("passagers.txt");
+
+			if (!f.is_open()) {
+				MessageBox::Show("Не удалось открыть файл passagers.txt", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return;
+			}
+
+			passagers v;
+			std::string line;
+			int recordCount = 0;
+			LIST* lastNode = nullptr;
+
+			// Читаем файл построчно
+			while (std::getline(f, line)) {
+				// Пропускаем разделители
+				if (line.find("---") != std::string::npos) {
+					continue;
+				}
+
+				// Читаем данные пассажира
+				v.phoneNumber = line;
+
+				if (!std::getline(f, v.fam)) break;
+				if (!std::getline(f, line)) break;
+				v.cardNumber = std::stoi(line);
+				if (!std::getline(f, v.level)) break;
+				if (!std::getline(f, line)) break;
+				v.pointCount = std::stoi(line);
+
+				if (L == nullptr) {
+					L = Init_List(v);
+					lastNode = L;
+				}
+				else {
+					lastNode = Ins_AfterList(v, L, lastNode);
+				}
+				recordCount++;
+			}
+
+			f.close();
+
+			if (recordCount == 0) {
+				MessageBox::Show("Файл пуст или содержит некорректные данные!", "Предупреждение",
+					MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			}
+			else {
+				Scan_List(L);
+				MessageBox::Show("Загружено записей: " + recordCount.ToString(), "Успех",
+					MessageBoxButtons::OK, MessageBoxIcon::Information);
 			}
 		}
-		else {
-			// Файл пустой или содержит некорректные данные
-			L = nullptr;
+		catch (std::exception& ex) {
+			MessageBox::Show("Ошибка при загрузке файла: " + gcnew System::String(ex.what()), "Ошибка",
+				MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Ошибка при загрузке файла: " + ex->Message, "Ошибка",
+				MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+	}
+	private: System::Void saveToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		if (L == nullptr) {
+			MessageBox::Show("Нет данных для сохранения!", "Предупреждение",
+				MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			return;
 		}
 
-		f.close();
-		Scan_List(L);  // Обновление отображения списка в интерфейсе
+		try {
+			SaveListToFile(L, "passagers.txt");
+			MessageBox::Show("Данные успешно сохранены в файл passagers.txt!", "Успех",
+				MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Ошибка при сохранении файла: " + ex->Message, "Ошибка",
+				MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
 	}
-	private: System::Void сохранитьToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
-	{
-		SaveListToFile(L, "passagers.txt");
+		   // Дополнительная функция для обработки просмотра карты
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (String::IsNullOrWhiteSpace(cardNumTxt->Text)) {
+			MessageBox::Show("Введите номер карты!", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+
+		if (L == nullptr) {
+			MessageBox::Show("Список пуст!", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+
+		try {
+			int cardNum = Convert::ToInt32(cardNumTxt->Text->Trim());
+			LIST* q = L;
+			bool found = false;
+
+			while (q != nullptr) {
+				if (q->element.cardNumber == cardNum) {
+					label5->Text = System::Convert::ToString(q->element.pointCount);
+					found = true;
+					break;
+				}
+				q = q->next;
+			}
+
+			if (!found) {
+				MessageBox::Show("Карта с таким номером не найдена!", "Поиск",
+					MessageBoxButtons::OK, MessageBoxIcon::Information);
+				label5->Text = "0";
+			}
+
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Ошибка: введите корректный номер карты!", "Ошибка",
+				MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
 	}
-	};
+
+		   // Обработчик начисления баллов
+	private: System::Void addPointButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (String::IsNullOrWhiteSpace(cardNumTxt->Text) ||
+			String::IsNullOrWhiteSpace(changePointTxt->Text) ||
+			changePointBox->SelectedIndex < 0) {
+			MessageBox::Show("Заполните все поля для изменения баллов!", "Ошибка",
+				MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+
+		try {
+			int cardNum = Convert::ToInt32(cardNumTxt->Text->Trim());
+			int pointChange = Convert::ToInt32(changePointTxt->Text->Trim());
+
+			if (pointChange <= 0) {
+				MessageBox::Show("Количество баллов должно быть положительным!", "Ошибка",
+					MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return;
+			}
+
+			LIST* q = L;
+			bool found = false;
+
+			while (q != nullptr) {
+				if (q->element.cardNumber == cardNum) {
+					if (changePointBox->SelectedIndex == 0)
+					{
+						q->element.pointCount += pointChange;
+					}
+					else
+					{
+						if (q->element.pointCount >= pointChange)
+						{
+							q->element.pointCount -= pointChange;
+						}
+						else
+						{
+							MessageBox::Show("Недостаточно баллов для списания!", "Ошибка",
+								MessageBoxButtons::OK, MessageBoxIcon::Error);
+							return;
+						}
+					}
+
+					label5->Text = System::Convert::ToString(q->element.pointCount);
+					Scan_List(L);
+					found = true;
+
+					MessageBox::Show("Баллы успешно изменены!", "Успех",
+						MessageBoxButtons::OK, MessageBoxIcon::Information);
+					break;
+				}
+				q = q->next;
+			}
+
+			if (!found)
+			{
+				MessageBox::Show("Карта с таким номером не найдена!", "Ошибка",
+					MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Ошибка при изменении баллов: " + ex->Message, "Ошибка",
+				MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+	}
+
+	private: System::Void changeLevelButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (String::IsNullOrWhiteSpace(cardNumTxt->Text) || comboBox2->SelectedIndex < 0) {
+			MessageBox::Show("Заполните номер карты и выберите новый уровень!", "Ошибка",
+				MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+
+		try {
+			int cardNum = Convert::ToInt32(cardNumTxt->Text->Trim());
+			marshal_context^ context = gcnew marshal_context();
+			std::string newLevel = context->marshal_as<std::string>(comboBox2->Text);
+
+			LIST* q = L;
+			bool found = false;
+
+			while (q != nullptr) {
+				if (q->element.cardNumber == cardNum) {
+					q->element.level = newLevel;
+					Scan_List(L);
+					found = true;
+
+					MessageBox::Show("Уровень лояльности успешно изменен!", "Успех",
+						MessageBoxButtons::OK, MessageBoxIcon::Information);
+					break;
+				}
+				q = q->next;
+			}
+
+			if (!found) {
+				MessageBox::Show("Карта с таким номером не найдена!", "Ошибка",
+					MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+
+			delete context;
+
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Ошибка при изменении уровня: " + ex->Message, "Ошибка",
+				MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+	}
+};
 }

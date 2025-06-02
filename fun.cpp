@@ -1,5 +1,3 @@
-// Реализация функций fun.cpp
-
 #include "fun.h"
 
 // Инициализация списка (первый элемент)
@@ -173,11 +171,10 @@ LIST* SortByPointsDescending(LIST* L) {
 }
 
 // Освобождение памяти
-LIST* FreeList(LIST* L) {
+void FreeList(LIST* L) {
     while (L) {
         LIST* temp = L;
         L = L->next;
         delete temp;
     }
-    return nullptr;
 }

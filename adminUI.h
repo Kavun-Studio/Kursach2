@@ -47,7 +47,7 @@ namespace Krsv {
 			}
 		}
 	private: System::Windows::Forms::DataGridView^ fullGrid;
-	private: System::Windows::Forms::DataGridView^ cardGrid;
+
 	protected:
 	private: System::Windows::Forms::MenuStrip^ menuStrip1;
 	private: System::Windows::Forms::ToolStripMenuItem^ файлToolStripMenuItem;
@@ -56,10 +56,10 @@ namespace Krsv {
 	private: System::Windows::Forms::ToolStripMenuItem^ clearToolStripMenuItem;
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column6;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column9;
+
+
+
+
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Button^ addPointButton;
 	private: System::Windows::Forms::TextBox^ changePointTxt;
@@ -102,13 +102,25 @@ namespace Krsv {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ searchCardColumn;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ searchLevelColumn;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ searchPointColumn;
+	private: System::Windows::Forms::GroupBox^ groupBox1;
+	private: System::Windows::Forms::DataGridView^ dataGridView1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ nameLevelColumn;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ bonusColumn;
+	private: System::Windows::Forms::ToolTip^ toolTip1;
+	private: System::Windows::Forms::TextBox^ bonusTxt;
+
+	private: System::Windows::Forms::Button^ acceptBonusButton;
+	private: System::Windows::Forms::ComboBox^ levelBox;
+
+
+	private: System::ComponentModel::IContainer^ components;
 	protected:
 	protected:
 	private:
 		/// <summary>
 		/// Обязательная переменная конструктора.
 		/// </summary>
-		System::ComponentModel::Container^ components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -117,17 +129,13 @@ namespace Krsv {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			this->fullGrid = (gcnew System::Windows::Forms::DataGridView());
 			this->fullPhoneColumn = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->fullFamColumn = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->fullCardColumn = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->fullLevelColumn = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->fullPointColumn = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->cardGrid = (gcnew System::Windows::Forms::DataGridView());
-			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column9 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->файлToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->openToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -171,8 +179,15 @@ namespace Krsv {
 			this->searchButton = (gcnew System::Windows::Forms::Button());
 			this->searchTxt = (gcnew System::Windows::Forms::TextBox());
 			this->searchBox = (gcnew System::Windows::Forms::ComboBox());
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->toolTip1 = (gcnew System::Windows::Forms::ToolTip(this->components));
+			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->nameLevelColumn = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->bonusColumn = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->levelBox = (gcnew System::Windows::Forms::ComboBox());
+			this->acceptBonusButton = (gcnew System::Windows::Forms::Button());
+			this->bonusTxt = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->fullGrid))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->cardGrid))->BeginInit();
 			this->menuStrip1->SuspendLayout();
 			this->ChangeData->SuspendLayout();
 			this->groupBox3->SuspendLayout();
@@ -181,11 +196,13 @@ namespace Krsv {
 			this->Sort->SuspendLayout();
 			this->Search->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->searchGrid))->BeginInit();
+			this->groupBox1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// fullGrid
 			// 
-			this->fullGrid->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::AllCells;
+			this->fullGrid->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->fullGrid->BackgroundColor = System::Drawing::SystemColors::ActiveCaption;
 			this->fullGrid->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->fullGrid->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
@@ -207,7 +224,6 @@ namespace Krsv {
 			this->fullPhoneColumn->MinimumWidth = 8;
 			this->fullPhoneColumn->Name = L"fullPhoneColumn";
 			this->fullPhoneColumn->ReadOnly = true;
-			this->fullPhoneColumn->Width = 115;
 			// 
 			// fullFamColumn
 			// 
@@ -215,7 +231,6 @@ namespace Krsv {
 			this->fullFamColumn->MinimumWidth = 8;
 			this->fullFamColumn->Name = L"fullFamColumn";
 			this->fullFamColumn->ReadOnly = true;
-			this->fullFamColumn->Width = 126;
 			// 
 			// fullCardColumn
 			// 
@@ -223,7 +238,6 @@ namespace Krsv {
 			this->fullCardColumn->MinimumWidth = 8;
 			this->fullCardColumn->Name = L"fullCardColumn";
 			this->fullCardColumn->ReadOnly = true;
-			this->fullCardColumn->Width = 158;
 			// 
 			// fullLevelColumn
 			// 
@@ -231,7 +245,6 @@ namespace Krsv {
 			this->fullLevelColumn->MinimumWidth = 8;
 			this->fullLevelColumn->Name = L"fullLevelColumn";
 			this->fullLevelColumn->ReadOnly = true;
-			this->fullLevelColumn->Width = 187;
 			// 
 			// fullPointColumn
 			// 
@@ -239,51 +252,6 @@ namespace Krsv {
 			this->fullPointColumn->MinimumWidth = 8;
 			this->fullPointColumn->Name = L"fullPointColumn";
 			this->fullPointColumn->ReadOnly = true;
-			this->fullPointColumn->Width = 144;
-			// 
-			// cardGrid
-			// 
-			this->cardGrid->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::AllCells;
-			this->cardGrid->BackgroundColor = System::Drawing::SystemColors::ActiveCaption;
-			this->cardGrid->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->cardGrid->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
-				this->Column4, this->Column5,
-					this->Column6, this->Column9
-			});
-			this->cardGrid->Location = System::Drawing::Point(513, 104);
-			this->cardGrid->Name = L"cardGrid";
-			this->cardGrid->RowHeadersWidth = 62;
-			this->cardGrid->RowTemplate->Height = 28;
-			this->cardGrid->Size = System::Drawing::Size(896, 258);
-			this->cardGrid->TabIndex = 22;
-			// 
-			// Column4
-			// 
-			this->Column4->HeaderText = L"Дата";
-			this->Column4->MinimumWidth = 8;
-			this->Column4->Name = L"Column4";
-			this->Column4->Width = 96;
-			// 
-			// Column5
-			// 
-			this->Column5->HeaderText = L"Время";
-			this->Column5->MinimumWidth = 8;
-			this->Column5->Name = L"Column5";
-			this->Column5->Width = 108;
-			// 
-			// Column6
-			// 
-			this->Column6->HeaderText = L"Тип";
-			this->Column6->MinimumWidth = 8;
-			this->Column6->Name = L"Column6";
-			this->Column6->Width = 84;
-			// 
-			// Column9
-			// 
-			this->Column9->HeaderText = L"Количество";
-			this->Column9->MinimumWidth = 8;
-			this->Column9->Name = L"Column9";
-			this->Column9->Width = 168;
 			// 
 			// menuStrip1
 			// 
@@ -292,7 +260,7 @@ namespace Krsv {
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->файлToolStripMenuItem });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(1441, 33);
+			this->menuStrip1->Size = System::Drawing::Size(1642, 36);
 			this->menuStrip1->TabIndex = 25;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -309,21 +277,21 @@ namespace Krsv {
 			// openToolStripMenuItem
 			// 
 			this->openToolStripMenuItem->Name = L"openToolStripMenuItem";
-			this->openToolStripMenuItem->Size = System::Drawing::Size(270, 34);
+			this->openToolStripMenuItem->Size = System::Drawing::Size(200, 34);
 			this->openToolStripMenuItem->Text = L"Открыть";
 			this->openToolStripMenuItem->Click += gcnew System::EventHandler(this, &adminUI::openToolStripMenuItem_Click);
 			// 
 			// saveToolStripMenuItem
 			// 
 			this->saveToolStripMenuItem->Name = L"saveToolStripMenuItem";
-			this->saveToolStripMenuItem->Size = System::Drawing::Size(270, 34);
+			this->saveToolStripMenuItem->Size = System::Drawing::Size(200, 34);
 			this->saveToolStripMenuItem->Text = L"Сохранить";
 			this->saveToolStripMenuItem->Click += gcnew System::EventHandler(this, &adminUI::saveToolStripMenuItem_Click);
 			// 
 			// clearToolStripMenuItem
 			// 
 			this->clearToolStripMenuItem->Name = L"clearToolStripMenuItem";
-			this->clearToolStripMenuItem->Size = System::Drawing::Size(270, 34);
+			this->clearToolStripMenuItem->Size = System::Drawing::Size(200, 34);
 			this->clearToolStripMenuItem->Text = L"Очистить";
 			this->clearToolStripMenuItem->Click += gcnew System::EventHandler(this, &adminUI::clearToolStripMenuItem_Click);
 			// 
@@ -332,7 +300,7 @@ namespace Krsv {
 			this->label5->AutoSize = true;
 			this->label5->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label5->Location = System::Drawing::Point(1292, 30);
+			this->label5->Location = System::Drawing::Point(944, 33);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(28, 31);
 			this->label5->TabIndex = 26;
@@ -343,7 +311,7 @@ namespace Krsv {
 			this->label4->AutoSize = true;
 			this->label4->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label4->Location = System::Drawing::Point(860, 30);
+			this->label4->Location = System::Drawing::Point(546, 33);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(392, 31);
 			this->label4->TabIndex = 25;
@@ -411,12 +379,11 @@ namespace Krsv {
 			this->ChangeData->Controls->Add(this->groupBox2);
 			this->ChangeData->Controls->Add(this->cardNumTxt);
 			this->ChangeData->Controls->Add(this->button1);
-			this->ChangeData->Controls->Add(this->cardGrid);
 			this->ChangeData->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->ChangeData->Location = System::Drawing::Point(9, 667);
+			this->ChangeData->Location = System::Drawing::Point(9, 676);
 			this->ChangeData->Name = L"ChangeData";
-			this->ChangeData->Size = System::Drawing::Size(1425, 423);
+			this->ChangeData->Size = System::Drawing::Size(990, 289);
 			this->ChangeData->TabIndex = 32;
 			this->ChangeData->TabStop = false;
 			this->ChangeData->Text = L"Управление пользователем";
@@ -427,7 +394,7 @@ namespace Krsv {
 			this->groupBox3->Controls->Add(this->comboBox2);
 			this->groupBox3->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->groupBox3->Location = System::Drawing::Point(12, 235);
+			this->groupBox3->Location = System::Drawing::Point(534, 102);
 			this->groupBox3->Name = L"groupBox3";
 			this->groupBox3->Size = System::Drawing::Size(450, 127);
 			this->groupBox3->TabIndex = 33;
@@ -681,7 +648,7 @@ namespace Krsv {
 			// 
 			// searchGrid
 			// 
-			this->searchGrid->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::AllCells;
+			this->searchGrid->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->searchGrid->BackgroundColor = System::Drawing::SystemColors::ActiveCaption;
 			this->searchGrid->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->searchGrid->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
@@ -699,43 +666,43 @@ namespace Krsv {
 			// 
 			// searchPhoneColumn
 			// 
+			this->searchPhoneColumn->FillWeight = 71.42857F;
 			this->searchPhoneColumn->HeaderText = L"Телефон";
 			this->searchPhoneColumn->MinimumWidth = 8;
 			this->searchPhoneColumn->Name = L"searchPhoneColumn";
 			this->searchPhoneColumn->ReadOnly = true;
-			this->searchPhoneColumn->Width = 132;
 			// 
 			// searchFamColumn
 			// 
+			this->searchFamColumn->FillWeight = 76.51408F;
 			this->searchFamColumn->HeaderText = L"Фамилия И О";
 			this->searchFamColumn->MinimumWidth = 8;
 			this->searchFamColumn->Name = L"searchFamColumn";
 			this->searchFamColumn->ReadOnly = true;
-			this->searchFamColumn->Width = 133;
 			// 
 			// searchCardColumn
 			// 
+			this->searchCardColumn->FillWeight = 158.2371F;
 			this->searchCardColumn->HeaderText = L"Номер бонусной карты";
 			this->searchCardColumn->MinimumWidth = 8;
 			this->searchCardColumn->Name = L"searchCardColumn";
 			this->searchCardColumn->ReadOnly = true;
-			this->searchCardColumn->Width = 144;
 			// 
 			// searchLevelColumn
 			// 
+			this->searchLevelColumn->FillWeight = 131.1469F;
 			this->searchLevelColumn->HeaderText = L"Уровень лояльности";
 			this->searchLevelColumn->MinimumWidth = 8;
 			this->searchLevelColumn->Name = L"searchLevelColumn";
 			this->searchLevelColumn->ReadOnly = true;
-			this->searchLevelColumn->Width = 241;
 			// 
 			// searchPointColumn
 			// 
+			this->searchPointColumn->FillWeight = 62.67336F;
 			this->searchPointColumn->HeaderText = L"Кол-во баллов";
 			this->searchPointColumn->MinimumWidth = 8;
 			this->searchPointColumn->Name = L"searchPointColumn";
 			this->searchPointColumn->ReadOnly = true;
-			this->searchPointColumn->Width = 122;
 			// 
 			// searchButton
 			// 
@@ -773,13 +740,86 @@ namespace Krsv {
 			this->searchBox->Size = System::Drawing::Size(247, 33);
 			this->searchBox->TabIndex = 35;
 			// 
+			// groupBox1
+			// 
+			this->groupBox1->AutoSize = true;
+			this->groupBox1->Controls->Add(this->bonusTxt);
+			this->groupBox1->Controls->Add(this->acceptBonusButton);
+			this->groupBox1->Controls->Add(this->levelBox);
+			this->groupBox1->Controls->Add(this->dataGridView1);
+			this->groupBox1->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->groupBox1->Location = System::Drawing::Point(1005, 676);
+			this->groupBox1->Name = L"groupBox1";
+			this->groupBox1->Size = System::Drawing::Size(630, 288);
+			this->groupBox1->TabIndex = 40;
+			this->groupBox1->TabStop = false;
+			this->groupBox1->Text = L"Управление уровнями";
+			// 
+			// dataGridView1
+			// 
+			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
+			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(2) {
+				this->nameLevelColumn,
+					this->bonusColumn
+			});
+			this->dataGridView1->Location = System::Drawing::Point(204, 33);
+			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->ReadOnly = true;
+			this->dataGridView1->RowHeadersWidth = 62;
+			this->dataGridView1->RowTemplate->Height = 28;
+			this->dataGridView1->Size = System::Drawing::Size(418, 222);
+			this->dataGridView1->TabIndex = 0;
+			// 
+			// nameLevelColumn
+			// 
+			this->nameLevelColumn->HeaderText = L"Уровень";
+			this->nameLevelColumn->MinimumWidth = 8;
+			this->nameLevelColumn->Name = L"nameLevelColumn";
+			this->nameLevelColumn->ReadOnly = true;
+			// 
+			// bonusColumn
+			// 
+			this->bonusColumn->HeaderText = L"Бонус";
+			this->bonusColumn->MinimumWidth = 8;
+			this->bonusColumn->Name = L"bonusColumn";
+			this->bonusColumn->ReadOnly = true;
+			// 
+			// levelBox
+			// 
+			this->levelBox->FormattingEnabled = true;
+			this->levelBox->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"Bronze", L"Silver", L"Gold", L"Brilliand" });
+			this->levelBox->Location = System::Drawing::Point(6, 70);
+			this->levelBox->Name = L"levelBox";
+			this->levelBox->Size = System::Drawing::Size(192, 34);
+			this->levelBox->TabIndex = 1;
+			// 
+			// acceptBonusButton
+			// 
+			this->acceptBonusButton->Location = System::Drawing::Point(6, 182);
+			this->acceptBonusButton->Name = L"acceptBonusButton";
+			this->acceptBonusButton->Size = System::Drawing::Size(192, 34);
+			this->acceptBonusButton->TabIndex = 3;
+			this->acceptBonusButton->Text = L"Применить";
+			this->acceptBonusButton->UseVisualStyleBackColor = true;
+			// 
+			// bonusTxt
+			// 
+			this->bonusTxt->Location = System::Drawing::Point(6, 127);
+			this->bonusTxt->Name = L"bonusTxt";
+			this->bonusTxt->Size = System::Drawing::Size(192, 34);
+			this->bonusTxt->TabIndex = 4;
+			// 
 			// adminUI
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoSize = true;
+			this->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->ClientSize = System::Drawing::Size(1441, 1102);
+			this->ClientSize = System::Drawing::Size(1642, 975);
+			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->Search);
 			this->Controls->Add(this->Sort);
 			this->Controls->Add(this->addPassager);
@@ -792,7 +832,6 @@ namespace Krsv {
 			this->Text = L"adminUI";
 			this->Activated += gcnew System::EventHandler(this, &adminUI::adminUI_Activated);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->fullGrid))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->cardGrid))->EndInit();
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
 			this->ChangeData->ResumeLayout(false);
@@ -808,6 +847,9 @@ namespace Krsv {
 			this->Search->ResumeLayout(false);
 			this->Search->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->searchGrid))->EndInit();
+			this->groupBox1->ResumeLayout(false);
+			this->groupBox1->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 

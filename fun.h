@@ -1,22 +1,33 @@
 #ifndef FUN_H
 #define FUN_H
-#include <string>
+#include <cstdlib>
 #include <fstream>
 #include <iostream>
-#include <cstdlib>
+#include <string>
+#include <sstream>
 using namespace std;
 
 struct passagers {
-    string phoneNumber;
-    string fam;
-    int cardNumber;
-    string level;
-    int pointCount;
+	string phoneNumber;
+	string fam;
+	int cardNumber;
+	string level;
+	int pointCount;
 };
 
 struct LIST {
-    passagers element;
-    LIST* next;
+	passagers element;
+	LIST* next;
+};
+
+struct LoyaltyLevel {
+	std::string levelName;
+	int bonus;
+};
+
+struct LoyaltyNode {
+	LoyaltyLevel data;
+	LoyaltyNode* next;
 };
 
 // Инициализация списка (создание первого элемента)
@@ -54,5 +65,17 @@ LIST* SortByPointsDescending(LIST* L);
 
 // Очистка всей памяти
 void FreeList(LIST* L);
+
+// Инициализация списка
+LoyaltyNode* Init_LoyaltyList(LoyaltyLevel x);
+
+// Вставка нового уровня
+LoyaltyNode* Ins_LoyaltyList(LoyaltyLevel x, LoyaltyNode* list);
+
+// Поиск уровня по имени
+LoyaltyNode* Find_LoyaltyLevel(const std::string& levelName, LoyaltyNode* list);
+
+// Освобождение памяти
+void FreeLoyaltyList(LoyaltyNode* list);
 
 #endif // FUN_H

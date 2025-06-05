@@ -1,0 +1,4 @@
+Bronze,100
+Silver,20
+Gold,50
+Brilliand,100

@@ -30,9 +30,8 @@ namespace Krsv {
 		adminUI(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: добавьте код конструктора
-			//
+			LoadLoyaltyLevelsFromFile("loyalty_levels.txt");
+			UpdateLoyaltyGrid(); // Обновление таблицы
 		}
 
 	protected:
@@ -45,7 +44,9 @@ namespace Krsv {
 			{
 				delete components;
 			}
+			FreeLoyaltyList(loyaltyList);
 		}
+	private: LoyaltyNode* loyaltyList = nullptr;
 	private: System::Windows::Forms::DataGridView^ fullGrid;
 
 	protected:
@@ -104,13 +105,15 @@ namespace Krsv {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ searchPointColumn;
 	private: System::Windows::Forms::GroupBox^ groupBox1;
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ nameLevelColumn;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ bonusColumn;
+
+
 	private: System::Windows::Forms::ToolTip^ toolTip1;
 	private: System::Windows::Forms::TextBox^ bonusTxt;
 
 	private: System::Windows::Forms::Button^ acceptBonusButton;
 	private: System::Windows::Forms::ComboBox^ levelBox;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ nameLevelColumn;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ bonusColumn;
 
 
 	private: System::ComponentModel::IContainer^ components;
@@ -180,13 +183,13 @@ namespace Krsv {
 			this->searchTxt = (gcnew System::Windows::Forms::TextBox());
 			this->searchBox = (gcnew System::Windows::Forms::ComboBox());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->toolTip1 = (gcnew System::Windows::Forms::ToolTip(this->components));
+			this->bonusTxt = (gcnew System::Windows::Forms::TextBox());
+			this->acceptBonusButton = (gcnew System::Windows::Forms::Button());
+			this->levelBox = (gcnew System::Windows::Forms::ComboBox());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->toolTip1 = (gcnew System::Windows::Forms::ToolTip(this->components));
 			this->nameLevelColumn = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->bonusColumn = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->levelBox = (gcnew System::Windows::Forms::ComboBox());
-			this->acceptBonusButton = (gcnew System::Windows::Forms::Button());
-			this->bonusTxt = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->fullGrid))->BeginInit();
 			this->menuStrip1->SuspendLayout();
 			this->ChangeData->SuspendLayout();
@@ -215,7 +218,7 @@ namespace Krsv {
 			this->fullGrid->ReadOnly = true;
 			this->fullGrid->RowHeadersWidth = 62;
 			this->fullGrid->RowTemplate->Height = 28;
-			this->fullGrid->Size = System::Drawing::Size(849, 395);
+			this->fullGrid->Size = System::Drawing::Size(1056, 395);
 			this->fullGrid->TabIndex = 0;
 			// 
 			// fullPhoneColumn
@@ -260,7 +263,7 @@ namespace Krsv {
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->файлToolStripMenuItem });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(1642, 36);
+			this->menuStrip1->Size = System::Drawing::Size(1642, 33);
 			this->menuStrip1->TabIndex = 25;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -271,7 +274,7 @@ namespace Krsv {
 					this->saveToolStripMenuItem, this->clearToolStripMenuItem
 			});
 			this->файлToolStripMenuItem->Name = L"файлToolStripMenuItem";
-			this->файлToolStripMenuItem->Size = System::Drawing::Size(69, 32);
+			this->файлToolStripMenuItem->Size = System::Drawing::Size(69, 29);
 			this->файлToolStripMenuItem->Text = L"Файл";
 			// 
 			// openToolStripMenuItem
@@ -455,7 +458,7 @@ namespace Krsv {
 			this->addPassager->Controls->Add(this->addNumberTxt);
 			this->addPassager->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->addPassager->Location = System::Drawing::Point(878, 42);
+			this->addPassager->Location = System::Drawing::Point(1071, 42);
 			this->addPassager->Name = L"addPassager";
 			this->addPassager->Size = System::Drawing::Size(556, 395);
 			this->addPassager->TabIndex = 33;
@@ -641,7 +644,7 @@ namespace Krsv {
 				static_cast<System::Byte>(204)));
 			this->Search->Location = System::Drawing::Point(274, 443);
 			this->Search->Name = L"Search";
-			this->Search->Size = System::Drawing::Size(1161, 227);
+			this->Search->Size = System::Drawing::Size(1359, 227);
 			this->Search->TabIndex = 39;
 			this->Search->TabStop = false;
 			this->Search->Text = L"Поиск";
@@ -661,7 +664,7 @@ namespace Krsv {
 			this->searchGrid->ReadOnly = true;
 			this->searchGrid->RowHeadersWidth = 62;
 			this->searchGrid->RowTemplate->Height = 28;
-			this->searchGrid->Size = System::Drawing::Size(896, 169);
+			this->searchGrid->Size = System::Drawing::Size(1094, 169);
 			this->searchGrid->TabIndex = 40;
 			// 
 			// searchPhoneColumn
@@ -756,6 +759,32 @@ namespace Krsv {
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Управление уровнями";
 			// 
+			// bonusTxt
+			// 
+			this->bonusTxt->Location = System::Drawing::Point(6, 127);
+			this->bonusTxt->Name = L"bonusTxt";
+			this->bonusTxt->Size = System::Drawing::Size(192, 34);
+			this->bonusTxt->TabIndex = 4;
+			// 
+			// acceptBonusButton
+			// 
+			this->acceptBonusButton->Location = System::Drawing::Point(6, 182);
+			this->acceptBonusButton->Name = L"acceptBonusButton";
+			this->acceptBonusButton->Size = System::Drawing::Size(192, 34);
+			this->acceptBonusButton->TabIndex = 3;
+			this->acceptBonusButton->Text = L"Применить";
+			this->acceptBonusButton->UseVisualStyleBackColor = true;
+			this->acceptBonusButton->Click += gcnew System::EventHandler(this, &adminUI::acceptBonusButton_Click);
+			// 
+			// levelBox
+			// 
+			this->levelBox->FormattingEnabled = true;
+			this->levelBox->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"Bronze", L"Silver", L"Gold", L"Brilliand" });
+			this->levelBox->Location = System::Drawing::Point(6, 70);
+			this->levelBox->Name = L"levelBox";
+			this->levelBox->Size = System::Drawing::Size(192, 34);
+			this->levelBox->TabIndex = 1;
+			// 
 			// dataGridView1
 			// 
 			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
@@ -778,6 +807,7 @@ namespace Krsv {
 			this->nameLevelColumn->MinimumWidth = 8;
 			this->nameLevelColumn->Name = L"nameLevelColumn";
 			this->nameLevelColumn->ReadOnly = true;
+			this->nameLevelColumn->SortMode = System::Windows::Forms::DataGridViewColumnSortMode::NotSortable;
 			// 
 			// bonusColumn
 			// 
@@ -785,31 +815,7 @@ namespace Krsv {
 			this->bonusColumn->MinimumWidth = 8;
 			this->bonusColumn->Name = L"bonusColumn";
 			this->bonusColumn->ReadOnly = true;
-			// 
-			// levelBox
-			// 
-			this->levelBox->FormattingEnabled = true;
-			this->levelBox->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"Bronze", L"Silver", L"Gold", L"Brilliand" });
-			this->levelBox->Location = System::Drawing::Point(6, 70);
-			this->levelBox->Name = L"levelBox";
-			this->levelBox->Size = System::Drawing::Size(192, 34);
-			this->levelBox->TabIndex = 1;
-			// 
-			// acceptBonusButton
-			// 
-			this->acceptBonusButton->Location = System::Drawing::Point(6, 182);
-			this->acceptBonusButton->Name = L"acceptBonusButton";
-			this->acceptBonusButton->Size = System::Drawing::Size(192, 34);
-			this->acceptBonusButton->TabIndex = 3;
-			this->acceptBonusButton->Text = L"Применить";
-			this->acceptBonusButton->UseVisualStyleBackColor = true;
-			// 
-			// bonusTxt
-			// 
-			this->bonusTxt->Location = System::Drawing::Point(6, 127);
-			this->bonusTxt->Name = L"bonusTxt";
-			this->bonusTxt->Size = System::Drawing::Size(192, 34);
-			this->bonusTxt->TabIndex = 4;
+			this->bonusColumn->SortMode = System::Windows::Forms::DataGridViewColumnSortMode::NotSortable;
 			// 
 			// adminUI
 			// 
@@ -873,6 +879,54 @@ namespace Krsv {
 			fullGrid->Rows[i]->Cells[4]->Value = System::Convert::ToString(q->element.pointCount);
 			q = q->next;
 			i++;
+		}
+	}
+
+	private: void LoadLoyaltyLevelsFromFile(String^ filename) {
+		ifstream file(msclr::interop::marshal_as<std::string>(filename));
+		if (file.is_open()) {
+			FreeLoyaltyList(loyaltyList); // Очистка старого списка
+			loyaltyList = nullptr;
+			string line;
+			while (getline(file, line)) {
+				stringstream ss(line);
+				string name;
+				int bonus;
+				getline(ss, name, ',');
+				ss >> bonus;
+				LoyaltyLevel level{ name, bonus };
+				if (!loyaltyList) {
+					loyaltyList = Init_LoyaltyList(level);
+				}
+				else {
+					loyaltyList = Ins_LoyaltyList(level, loyaltyList);
+				}
+			}
+			file.close();
+		}
+	}
+
+	private: void UpdateLoyaltyGrid() {
+		dataGridView1->Rows->Clear();
+		LoyaltyNode* current = loyaltyList;
+		while (current) {
+			dataGridView1->Rows->Add(gcnew String(current->data.levelName.c_str()), current->data.bonus);
+			current = current->next;
+		}
+	}
+
+	private: void SaveLoyaltyLevelsToFile(LoyaltyNode* list, String^ filename) {
+		ofstream file(msclr::interop::marshal_as<std::string>(filename));
+		if (file.is_open()) {
+			LoyaltyNode* current = list;
+			while (current) {
+				file << current->data.levelName << "," << current->data.bonus << "\n";
+				current = current->next;
+			}
+			file.close();
+		}
+		else {
+			MessageBox::Show("Не удалось открыть файл для сохранения!", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}
 
@@ -969,7 +1023,6 @@ namespace Krsv {
 		}
 		fullGrid->Rows->Clear();
 		searchGrid->Rows->Clear();
-		cardGrid->Rows->Clear();
 
 		label5->Text = "0";
 
@@ -1239,18 +1292,20 @@ namespace Krsv {
 
 			while (q != nullptr) {
 				if (q->element.cardNumber == cardNum) {
-					if (changePointBox->SelectedIndex == 0)
-					{
-						q->element.pointCount += pointChange;
+					int bonus = 0;
+					LoyaltyNode* loyaltyNode = Find_LoyaltyLevel(q->element.level, loyaltyList);
+					if (loyaltyNode) {
+						bonus = loyaltyNode->data.bonus;
 					}
-					else
-					{
-						if (q->element.pointCount >= pointChange)
-						{
+
+					if (changePointBox->SelectedIndex == 0) {
+						q->element.pointCount += pointChange + bonus; // Применяем бонус при начислении
+					}
+					else {
+						if (q->element.pointCount >= pointChange) {
 							q->element.pointCount -= pointChange;
 						}
-						else
-						{
+						else {
 							MessageBox::Show("Недостаточно баллов для списания!", "Ошибка",
 								MessageBoxButtons::OK, MessageBoxIcon::Error);
 							return;
@@ -1268,12 +1323,10 @@ namespace Krsv {
 				q = q->next;
 			}
 
-			if (!found)
-			{
+			if (!found) {
 				MessageBox::Show("Карта с таким номером не найдена!", "Ошибка",
 					MessageBoxButtons::OK, MessageBoxIcon::Error);
 			}
-
 		}
 		catch (Exception^ ex) {
 			MessageBox::Show("Ошибка при изменении баллов: " + ex->Message, "Ошибка",
@@ -1322,5 +1375,35 @@ namespace Krsv {
 				MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}
-};
+
+		   /// <summary>
+		   ///	Управление уровнями лояльностями
+		   /// </summary>
+	private: System::Void acceptBonusButton_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		if (levelBox->SelectedIndex < 0 || String::IsNullOrWhiteSpace(bonusTxt->Text)) {
+			MessageBox::Show("Выберите уровень и введите бонус!", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+
+		try {
+			string selectedLevel = marshal_as<std::string>(levelBox->Text);
+			int newBonus = Convert::ToInt32(bonusTxt->Text);
+
+			LoyaltyNode* node = Find_LoyaltyLevel(selectedLevel, loyaltyList);
+			if (node) {
+				node->data.bonus = newBonus;
+				SaveLoyaltyLevelsToFile(loyaltyList, "loyalty_levels.txt");
+				UpdateLoyaltyGrid();
+				MessageBox::Show("Бонус успешно обновлен!", "Успех", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			else {
+				MessageBox::Show("Уровень не найден!", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("Ошибка при обновлении бонуса: " + ex->Message, "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+	}
+	};
 }

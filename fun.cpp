@@ -178,3 +178,48 @@ void FreeList(LIST* L) {
         delete temp;
     }
 }
+
+// Инициализация списка
+LoyaltyNode* Init_LoyaltyList(LoyaltyLevel x) {
+    LoyaltyNode* node = new LoyaltyNode;
+    node->data = x;
+    node->next = nullptr;
+    return node;
+}
+
+// Вставка нового уровня в конец списка
+LoyaltyNode* Ins_LoyaltyList(LoyaltyLevel x, LoyaltyNode* list) {
+    LoyaltyNode* newNode = new LoyaltyNode;
+    newNode->data = x;
+    newNode->next = nullptr;
+    if (!list) {
+        return newNode;
+    }
+    LoyaltyNode* current = list;
+    while (current->next) {
+        current = current->next;
+    }
+    current->next = newNode;
+    return list;
+}
+
+// Поиск уровня по имени
+LoyaltyNode* Find_LoyaltyLevel(const std::string& levelName, LoyaltyNode* list) {
+    LoyaltyNode* current = list;
+    while (current) {
+        if (current->data.levelName == levelName) {
+            return current;
+        }
+        current = current->next;
+    }
+    return nullptr;
+}
+
+// Освобождение памяти
+void FreeLoyaltyList(LoyaltyNode* list) {
+    while (list) {
+        LoyaltyNode* temp = list;
+        list = list->next;
+        delete temp;
+    }
+}

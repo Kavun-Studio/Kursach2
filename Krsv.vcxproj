@@ -25,6 +25,7 @@
     <Keyword>ManagedCProj</Keyword>
     <RootNamespace>Krsv</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Avia</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -129,6 +130,7 @@
     <ClCompile Include="adminUI.cpp" />
     <ClCompile Include="Auth1.cpp" />
     <ClCompile Include="fun.cpp" />
+    <ClCompile Include="operatorUI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="adminUI.h">
@@ -138,6 +140,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="fun.h" />
+    <ClInclude Include="operatorUI.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="adminUI.resx">
@@ -145,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Auth1.resx">
       <DependentUpon>Auth1.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="operatorUI.resx">
+      <DependentUpon>operatorUI.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

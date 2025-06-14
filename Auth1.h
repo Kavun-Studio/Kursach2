@@ -1,5 +1,17 @@
+/*
+{*****************************}
+{ Модуль Auth1.h    }
+{ гр. П23                     }
+{ Разработчик: Самусёнок А.С    }
+{ Модифицирован: 13 июня 2025 }
+{-----------------------------}
+{ Модуль окна авторизации     }
+{*****************************}
+*/
+
 #pragma once
 #include "adminUI.h"
+#include "operatorUI.h"
 #include "fun.h"
 
 namespace Krsv {
@@ -61,6 +73,7 @@ namespace Krsv {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Auth::typeid));
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
@@ -83,6 +96,7 @@ namespace Krsv {
 				static_cast<System::Byte>(204)));
 			this->textBox2->Location = System::Drawing::Point(40, 178);
 			this->textBox2->Name = L"textBox2";
+			this->textBox2->PasswordChar = '*';
 			this->textBox2->Size = System::Drawing::Size(300, 44);
 			this->textBox2->TabIndex = 3;
 			// 
@@ -124,12 +138,14 @@ namespace Krsv {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->ClientSize = System::Drawing::Size(378, 444);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->textBox1);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"Auth";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Авторизация";
@@ -140,8 +156,56 @@ namespace Krsv {
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
-		adminUI^ f = gcnew adminUI;
-		f->Show();
+		String^ login = textBox1->Text;
+		String^ password = textBox2->Text;
+
+		std::string loginStr = msclr::interop::marshal_as<std::string>(login);
+		std::string passwordStr = msclr::interop::marshal_as<std::string>(password);
+
+		std::ifstream file("users.txt");
+		if (!file.is_open()) {
+			MessageBox::Show("Не удалось открыть файл users.txt!", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+
+		std::string adminLogin, adminPassword, operatorLogin, operatorPassword;
+		std::string line;
+		int lineCount = 0;
+
+		while (std::getline(file, line)) {
+			size_t pos = line.find(":");
+			if (pos != std::string::npos) {
+				if (lineCount == 0) {
+					adminLogin = line.substr(0, pos);
+					adminPassword = line.substr(pos + 1);
+				}
+				else if (lineCount == 1) {
+					operatorLogin = line.substr(0, pos);
+					operatorPassword = line.substr(pos + 1);
+				}
+				lineCount++;
+			}
+		}
+		file.close();
+
+		if (lineCount < 2) {
+			MessageBox::Show("Недостаточно данных в файле users.txt! Требуется минимум 2 строки (админ и оператор).", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+
+		if (loginStr == adminLogin && passwordStr == adminPassword) {
+			adminUI^ f = gcnew adminUI;
+			this->Hide();
+			f->Show();
+		}
+		else if (loginStr == operatorLogin && passwordStr == operatorPassword) {
+			operatorUI^ f = gcnew operatorUI;
+			this->Hide();
+			f->Show();
+		}
+		else {
+			MessageBox::Show("Неверный логин или пароль!", "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
 	}
 };
 }

@@ -1,8 +1,16 @@
+/*
+{*****************************}
+{ Модуль AdminUI.h      }
+{ гр. П21                     }
+{ Разработчик: Самусёнок А.С    }
+{ Модифицирован: 13 июня 2025 }
+{-----------------------------}
+{ Модуль окна администратора  }
+{*****************************}
+*/
+
 #pragma once
 #include "fun.h"
-#include <fstream>
-#include <msclr/marshal_cppstd.h>
-#include <string>
 
 namespace Krsv {
 
@@ -45,6 +53,12 @@ namespace Krsv {
 				delete components;
 			}
 			FreeLoyaltyList(loyaltyList);
+			// Освобождаем список пассажиров
+			while (L != nullptr) {
+				L = DelFirst_List(L);
+			}
+			// Завершаем процесс
+			System::Environment::Exit(0);
 		}
 	private: LoyaltyNode* loyaltyList = nullptr;
 	private: System::Windows::Forms::DataGridView^ fullGrid;
@@ -114,6 +128,7 @@ namespace Krsv {
 	private: System::Windows::Forms::ComboBox^ levelBox;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ nameLevelColumn;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ bonusColumn;
+	private: System::Windows::Forms::Label^ label8;
 
 
 	private: System::ComponentModel::IContainer^ components;
@@ -152,6 +167,7 @@ namespace Krsv {
 			this->changePointBox = (gcnew System::Windows::Forms::ComboBox());
 			this->cardNumTxt = (gcnew System::Windows::Forms::TextBox());
 			this->ChangeData = (gcnew System::Windows::Forms::GroupBox());
+			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
 			this->changeLevelButton = (gcnew System::Windows::Forms::Button());
 			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
@@ -187,9 +203,9 @@ namespace Krsv {
 			this->acceptBonusButton = (gcnew System::Windows::Forms::Button());
 			this->levelBox = (gcnew System::Windows::Forms::ComboBox());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->toolTip1 = (gcnew System::Windows::Forms::ToolTip(this->components));
 			this->nameLevelColumn = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->bonusColumn = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->toolTip1 = (gcnew System::Windows::Forms::ToolTip(this->components));
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->fullGrid))->BeginInit();
 			this->menuStrip1->SuspendLayout();
 			this->ChangeData->SuspendLayout();
@@ -263,7 +279,7 @@ namespace Krsv {
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->файлToolStripMenuItem });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(1642, 33);
+			this->menuStrip1->Size = System::Drawing::Size(1678, 33);
 			this->menuStrip1->TabIndex = 25;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -323,7 +339,7 @@ namespace Krsv {
 			// button1
 			// 
 			this->button1->AutoSize = true;
-			this->button1->Location = System::Drawing::Point(337, 42);
+			this->button1->Location = System::Drawing::Point(333, 57);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(191, 38);
 			this->button1->TabIndex = 17;
@@ -368,7 +384,7 @@ namespace Krsv {
 			// 
 			this->cardNumTxt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->cardNumTxt->Location = System::Drawing::Point(12, 44);
+			this->cardNumTxt->Location = System::Drawing::Point(18, 60);
 			this->cardNumTxt->Name = L"cardNumTxt";
 			this->cardNumTxt->Size = System::Drawing::Size(297, 30);
 			this->cardNumTxt->TabIndex = 31;
@@ -376,6 +392,7 @@ namespace Krsv {
 			// ChangeData
 			// 
 			this->ChangeData->AutoSize = true;
+			this->ChangeData->Controls->Add(this->label8);
 			this->ChangeData->Controls->Add(this->label5);
 			this->ChangeData->Controls->Add(this->groupBox3);
 			this->ChangeData->Controls->Add(this->label4);
@@ -384,12 +401,23 @@ namespace Krsv {
 			this->ChangeData->Controls->Add(this->button1);
 			this->ChangeData->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->ChangeData->Location = System::Drawing::Point(9, 676);
+			this->ChangeData->Location = System::Drawing::Point(9, 693);
 			this->ChangeData->Name = L"ChangeData";
 			this->ChangeData->Size = System::Drawing::Size(990, 289);
 			this->ChangeData->TabIndex = 32;
 			this->ChangeData->TabStop = false;
 			this->ChangeData->Text = L"Управление пользователем";
+			// 
+			// label8
+			// 
+			this->label8->AutoSize = true;
+			this->label8->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label8->Location = System::Drawing::Point(13, 31);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(252, 26);
+			this->label8->TabIndex = 34;
+			this->label8->Text = L"Номер бонусной карты";
 			// 
 			// groupBox3
 			// 
@@ -397,7 +425,7 @@ namespace Krsv {
 			this->groupBox3->Controls->Add(this->comboBox2);
 			this->groupBox3->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->groupBox3->Location = System::Drawing::Point(534, 102);
+			this->groupBox3->Location = System::Drawing::Point(522, 129);
 			this->groupBox3->Name = L"groupBox3";
 			this->groupBox3->Size = System::Drawing::Size(450, 127);
 			this->groupBox3->TabIndex = 33;
@@ -435,7 +463,7 @@ namespace Krsv {
 			this->groupBox2->Controls->Add(this->changePointTxt);
 			this->groupBox2->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->groupBox2->Location = System::Drawing::Point(12, 102);
+			this->groupBox2->Location = System::Drawing::Point(12, 128);
 			this->groupBox2->Name = L"groupBox2";
 			this->groupBox2->Size = System::Drawing::Size(450, 127);
 			this->groupBox2->TabIndex = 32;
@@ -458,7 +486,7 @@ namespace Krsv {
 			this->addPassager->Controls->Add(this->addNumberTxt);
 			this->addPassager->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->addPassager->Location = System::Drawing::Point(1071, 42);
+			this->addPassager->Location = System::Drawing::Point(1110, 42);
 			this->addPassager->Name = L"addPassager";
 			this->addPassager->Size = System::Drawing::Size(556, 395);
 			this->addPassager->TabIndex = 33;
@@ -626,7 +654,7 @@ namespace Krsv {
 			this->Sort->Controls->Add(this->sortBox);
 			this->Sort->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->Sort->Location = System::Drawing::Point(9, 443);
+			this->Sort->Location = System::Drawing::Point(12, 460);
 			this->Sort->Name = L"Sort";
 			this->Sort->Size = System::Drawing::Size(259, 227);
 			this->Sort->TabIndex = 37;
@@ -642,7 +670,7 @@ namespace Krsv {
 			this->Search->Controls->Add(this->searchBox);
 			this->Search->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->Search->Location = System::Drawing::Point(274, 443);
+			this->Search->Location = System::Drawing::Point(307, 461);
 			this->Search->Name = L"Search";
 			this->Search->Size = System::Drawing::Size(1359, 227);
 			this->Search->TabIndex = 39;
@@ -752,7 +780,7 @@ namespace Krsv {
 			this->groupBox1->Controls->Add(this->dataGridView1);
 			this->groupBox1->Font = (gcnew System::Drawing::Font(L"JetBrains Mono", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->groupBox1->Location = System::Drawing::Point(1005, 676);
+			this->groupBox1->Location = System::Drawing::Point(1036, 694);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Size = System::Drawing::Size(630, 288);
 			this->groupBox1->TabIndex = 40;
@@ -824,7 +852,7 @@ namespace Krsv {
 			this->AutoSize = true;
 			this->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->ClientSize = System::Drawing::Size(1642, 975);
+			this->ClientSize = System::Drawing::Size(1678, 994);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->Search);
 			this->Controls->Add(this->Sort);
@@ -835,8 +863,9 @@ namespace Krsv {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"adminUI";
-			this->Text = L"adminUI";
+			this->Text = L"Администратор";
 			this->Activated += gcnew System::EventHandler(this, &adminUI::adminUI_Activated);
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &adminUI::adminUI_FormClosing);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->fullGrid))->EndInit();
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
@@ -1016,17 +1045,10 @@ namespace Krsv {
 
 	private: System::Void clearToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		if (L != nullptr) {
-			while (L != nullptr) {
-				L = DelFirst_List(L);
-			}
-		}
 		fullGrid->Rows->Clear();
 		searchGrid->Rows->Clear();
-
 		label5->Text = "0";
-
-		MessageBox::Show("Данные очищены!", "Информация", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		MessageBox::Show("Таблицы очищены!", "Информация", MessageBoxButtons::OK, MessageBoxIcon::Information);
 	}
 	private: System::Void addButton_Click(System::Object^ sender, System::EventArgs^ e)
 	{
@@ -1103,8 +1125,6 @@ namespace Krsv {
 			}
 
 			Scan_List(L);
-			MessageBox::Show("Сортировка по возрастанию выполнена!", "Успех", MessageBoxButtons::OK, MessageBoxIcon::Information);
-
 		}
 		catch (Exception^ ex) {
 			MessageBox::Show("Ошибка при сортировке: " + ex->Message, "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
@@ -1131,8 +1151,6 @@ namespace Krsv {
 			}
 
 			Scan_List(L);
-			MessageBox::Show("Сортировка по убыванию выполнена!", "Успех", MessageBoxButtons::OK, MessageBoxIcon::Information);
-
 		}
 		catch (Exception^ ex) {
 			MessageBox::Show("Ошибка при сортировке: " + ex->Message, "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
@@ -1299,7 +1317,7 @@ namespace Krsv {
 					}
 
 					if (changePointBox->SelectedIndex == 0) {
-						q->element.pointCount += pointChange + bonus; // Применяем бонус при начислении
+						q->element.pointCount += pointChange + bonus;
 					}
 					else {
 						if (q->element.pointCount >= pointChange) {
@@ -1404,6 +1422,56 @@ namespace Krsv {
 		catch (Exception^ ex) {
 			MessageBox::Show("Ошибка при обновлении бонуса: " + ex->Message, "Ошибка", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
+	}
+	private: System::Void adminUI_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e)
+	{
+		if (L != nullptr) {
+			// Показываем диалог с вопросом о сохранении
+			System::Windows::Forms::DialogResult result = MessageBox::Show(
+				"У вас есть несохраненные данные. Хотите сохранить их перед выходом?",
+				"Сохранение данных",
+				MessageBoxButtons::YesNoCancel,
+				MessageBoxIcon::Question
+			);
+
+			if (result == System::Windows::Forms::DialogResult::Yes) {
+				// Пользователь хочет сохранить
+				try {
+					SaveListToFile(L, "passagers.txt");
+
+					// Также сохраняем уровни лояльности, если они есть
+					if (loyaltyList != nullptr) {
+						SaveLoyaltyLevelsToFile(loyaltyList, "loyalty_levels.txt");
+					}
+
+					MessageBox::Show("Данные успешно сохранены!", "Сохранение",
+						MessageBoxButtons::OK, MessageBoxIcon::Information);
+				}
+				catch (Exception^ ex) {
+					MessageBox::Show("Ошибка при сохранении: " + ex->Message, "Ошибка",
+						MessageBoxButtons::OK, MessageBoxIcon::Error);
+
+					// Спрашиваем, хочет ли пользователь выйти без сохранения
+					System::Windows::Forms::DialogResult exitResult = MessageBox::Show(
+						"Не удалось сохранить данные. Выйти без сохранения?",
+						"Ошибка сохранения",
+						MessageBoxButtons::YesNo,
+						MessageBoxIcon::Warning
+					);
+
+					if (exitResult == System::Windows::Forms::DialogResult::No) {
+						e->Cancel = true; // Отменяем закрытие формы
+					}
+				}
+			}
+			else if (result == System::Windows::Forms::DialogResult::Cancel) {
+				// Пользователь отменил закрытие
+				e->Cancel = true;
+			}
+			// Если выбрано "No", то просто закрываем без сохранения
+		}
+
+		// Если данных нет (L == nullptr), форма закроется без вопросов
 	}
 	};
 }
